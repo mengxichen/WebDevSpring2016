@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="create form maker web">
+    <meta name="author" content="Mengxi Chen">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Forms</title>
+    <title>Form fields</title>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -26,146 +28,151 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Form Maker</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="icon-bar">Register</span>
+                    <span class="icon-bar">Login</span>
+                    <span class="icon-bar">Username</span>
+                    <span class="icon-bal">Logout</span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="profile.html">Username</a></li>
+                    <li><a href="home.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Form Maker</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="profile.html">Username</a></li>
-                <li><a href="home.html">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li class="active"><a href="form-fields.html">Forms<span class="sr-only">(current)</span></a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Forms</h1>
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="forms.html" aria-controls="forms" role="tab" data-toggle="tab">Forms</a></li>
-                <li role="presentation"  class="active"><a href="form-fields.html" aria-controls="form-fields" role="tab" data-toggle="tab">Fields</a></li>
-            </ul>
-            <div class="tab-content">
-                <form role="form">
-                    <div class="form-group">
-                        <label class="control-label col-md-10" for="firstname">First Name:</label>
-                        <div class=" col-md-5">
-                            <input type="text" class="form-control" placeholder="First Name">
-                        </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-                        <label  class="control-label col-md-10" for="lastname">Last Name:</label>
-                        <div class=" col-md-5">
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-                        <label  class="control-label col-md-10" for="boa">Date of Birth:</label>
-                        <div class = "col-md-5">
-                            <input type="date" class ="form-control" placeholder="Select Date">
-                        </div>
-
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-                        <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
-                        <div class = "col-md-5">
-                            <select class="form-control" id="gender">
-                                <option>Female</option>
-                                <option>Male</option>
-                            </select>
-                        </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-                        <label class = "control-label col-md-10" for="roles">Roles:</label>
-                        <div class = "col-md-5">
-                            <div class="checkbox">
-                                <label><input type="checkbox" value="">Admin</label>
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li class="active"><a href="form-fields.html">Forms<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Forms</h1>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="forms.html" aria-controls="forms" role="tab" data-toggle="tab">Forms</a></li>
+                    <li role="presentation"  class="active"><a href="form-fields.html" aria-controls="form-fields" role="tab" data-toggle="tab">Fields</a></li>
+                </ul>
+                <div class="tab-content">
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="control-label col-md-10" for="firstname">First Name:</label>
+                            <div class=" col-md-5">
+                                <input type="text" class="form-control" placeholder="First Name">
                             </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" value="">Student</label>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+                            <label  class="control-label col-md-10" for="lastname">Last Name:</label>
+                            <div class=" col-md-5">
+                                <input type="text" class="form-control" placeholder="Last Name">
                             </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" value="">User</label>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+                            <label  class="control-label col-md-10" for="boa">Date of Birth:</label>
+                            <div class = "col-md-5">
+                                <input type="date" class ="form-control" placeholder="Select Date">
                             </div>
 
-                        </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-                        <label class = "control-label col-md-10" for="license">License Aggreement:</label>
-                        <div class = "col-md-5">
-                            <div class="radio">
-                                <label><input type="radio" name="license" checked>Yes</label>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+                            <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
+                            <div class = "col-md-5">
+                                <select class="form-control" id="gender">
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                </select>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="license">No</label>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+                            <label class = "control-label col-md-10" for="roles">Roles:</label>
+                            <div class = "col-md-5">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Admin</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Student</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">User</label>
+                                </div>
+
                             </div>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+                            <label class = "control-label col-md-10" for="license">License Aggreement:</label>
+                            <div class = "col-md-5">
+                                <div class="radio">
+                                    <label><input type="radio" name="license" checked>Yes</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="license">No</label>
+                                </div>
+
+                            </div>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                <li class="glyphicon glyphicon-remove pull-right"></li>
+                                <li class="glyphicon glyphicon-plus pull-right"></li>
+                                <li class="glyphicon glyphicon-pencil pull-right"></li>
+                            </ul>
+
+                            <label class = "control-label col-md-10" for="newField">Add New Field:</label>
+
+                            <div class="col-md-5">
+                                <select class="form-control" id="newField">
+                                    <option>Single Line Text</option>
+                                    <option>Date</option>
+                                    <option>Dropdown</option>
+                                    <option>Checkboxes</option>
+                                    <option>Radio buttons</option>
+                                    <option>Paragraph Text Field</option>
+                                </select>
+                            </div>
+                            <ul class = "col-md-5">
+                                <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
+                            </ul>
+
+
+
 
                         </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                            <li class="glyphicon glyphicon-remove pull-right"></li>
-                            <li class="glyphicon glyphicon-plus pull-right"></li>
-                            <li class="glyphicon glyphicon-pencil pull-right"></li>
-                        </ul>
-
-                        <label class = "control-label col-md-10" for="newField">Add New Field:</label>
-
-                        <div class="col-md-5">
-                            <select class="form-control" id="newField">
-                                <option>Single Line Text</option>
-                                <option>Date</option>
-                                <option>Dropdown</option>
-                                <option>Checkboxes</option>
-                                <option>Radio buttons</option>
-                                <option>Paragraph Text Field</option>
-                            </select>
-                        </div>
-                        <ul class = "col-md-5">
-                            <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
-                        </ul>
-
-
-
-
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>
