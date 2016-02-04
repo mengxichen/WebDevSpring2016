@@ -61,176 +61,177 @@
             </div>
             <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Forms</h1>
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"><a href="#" role="tab" data-toggle="tab">Forms</a></li>
-                    <li role="presentation"><a href="form-fields.html" role="tab" data-toggle="tab">Fields</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active ">
-                        <div class=" table-responsive">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th class="col-md-6">
-                                        <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                        Form Name</th>
-                                    <th class="col-md-4">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td ><input class="form-control"  type="text" placeholder="name"></td>
-                                    <td >
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-plus">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-ok">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Registration Form</td>
-                                    <td>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Contact List</td>
-                                    <td>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>To Do list</td>
-                                    <td>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class = "active"><a href="#form" data-toggle="tab">Forms</a></li>
+                        <li role="presentation"><a href="#formfield" data-toggle="tab">Fields</a></li>
+                    </ul>
+                    <div class="tab-content" >
+                        <div id ="form" class="tab-pane active">
+                            <div class=" table-responsive">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th class="col-md-6">
+                                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                            Form Name</th>
+                                        <th class="col-md-4">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td ><input class="form-control"  type="text" placeholder="name"></td>
+                                        <td >
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-plus">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-ok">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registration Form</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contact List</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>To Do list</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
 
+                        <div class="tab-pane" id="formfield">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label class="control-label col-md-10" for="firstname">First Name:</label>
+                                    <div class=" col-md-5">
+                                        <input type="text" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+                                    <label  class="control-label col-md-10" for="lastname">Last Name:</label>
+                                    <div class=" col-md-5">
+                                        <input type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+                                    <label  class="control-label col-md-10" for="boa">Date of Birth:</label>
+                                    <div class = "col-md-5">
+                                        <input type="date" class ="form-control" placeholder="Select Date">
+                                    </div>
+
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+                                    <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
+                                    <div class = "col-md-5">
+                                        <select class="form-control" id="gender">
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+                                    <label class = "control-label col-md-10" for="roles">Roles:</label>
+                                    <div class = "col-md-5">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Admin</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Student</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">User</label>
+                                        </div>
+
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+                                    <label class = "control-label col-md-10" for="license">License Aggreement:</label>
+                                    <div class = "col-md-5">
+                                        <div class="radio">
+                                            <label><input type="radio" name="license" checked>Yes</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="license">No</label>
+                                        </div>
+
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
+                                        <li class="glyphicon glyphicon-remove pull-right"></li>
+                                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                                    </ul>
+
+                                    <label class = "control-label col-md-10" for="newField">Add New Field:</label>
+
+                                    <div class="col-md-5">
+                                        <select class="form-control" id="newField">
+                                            <option>Single Line Text</option>
+                                            <option>Date</option>
+                                            <option>Dropdown</option>
+                                            <option>Checkboxes</option>
+                                            <option>Radio buttons</option>
+                                            <option>Paragraph Text Field</option>
+                                        </select>
+                                    </div>
+                                    <ul class = "col-md-5">
+                                        <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
+                                    </ul>
+
+                                </div>
+                            </form>
+                        </div>
                     </div>
-
-                    <div class="tab-pane">
-                        <form role="form">
-                            <div class="form-group">
-                                <label class="control-label col-md-10" for="firstname">First Name:</label>
-                                <div class=" col-md-5">
-                                    <input type="text" class="form-control" placeholder="First Name">
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-                                <label  class="control-label col-md-10" for="lastname">Last Name:</label>
-                                <div class=" col-md-5">
-                                    <input type="text" class="form-control" placeholder="Last Name">
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-                                <label  class="control-label col-md-10" for="boa">Date of Birth:</label>
-                                <div class = "col-md-5">
-                                    <input type="date" class ="form-control" placeholder="Select Date">
-                                </div>
-
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-                                <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
-                                <div class = "col-md-5">
-                                    <select class="form-control" id="gender">
-                                        <option>Female</option>
-                                        <option>Male</option>
-                                    </select>
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-                                <label class = "control-label col-md-10" for="roles">Roles:</label>
-                                <div class = "col-md-5">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Admin</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Student</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">User</label>
-                                    </div>
-
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-                                <label class = "control-label col-md-10" for="license">License Aggreement:</label>
-                                <div class = "col-md-5">
-                                    <div class="radio">
-                                        <label><input type="radio" name="license" checked>Yes</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="license">No</label>
-                                    </div>
-
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                                    <li class="glyphicon glyphicon-remove pull-right"></li>
-                                    <li class="glyphicon glyphicon-plus pull-right"></li>
-                                    <li class="glyphicon glyphicon-pencil pull-right"></li>
-                                </ul>
-
-                                <label class = "control-label col-md-10" for="newField">Add New Field:</label>
-
-                                <div class="col-md-5">
-                                    <select class="form-control" id="newField">
-                                        <option>Single Line Text</option>
-                                        <option>Date</option>
-                                        <option>Dropdown</option>
-                                        <option>Checkboxes</option>
-                                        <option>Radio buttons</option>
-                                        <option>Paragraph Text Field</option>
-                                    </select>
-                                </div>
-                                <ul class = "col-md-5">
-                                    <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
-                                </ul>
-
-                            </div>
-                        </form>
-                    </div>
-
                 </div>
 
             </div>
