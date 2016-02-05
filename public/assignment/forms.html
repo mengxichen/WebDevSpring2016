@@ -13,6 +13,10 @@
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -31,18 +35,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Form Maker</a>
+                <a href = "home.html" class="navbar-brand">Form Maker</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="icon-bar">Register</span>
-                    <span class="icon-bar">Login</span>
                     <span class="icon-bar">Username</span>
                     <span class="icon-bal">Logout</span>
                 </button>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="login.html">Login</a></li>
                     <li><a href="profile.html">Username</a></li>
                     <li><a href="home.html">Logout</a></li>
                 </ul>
@@ -132,7 +132,7 @@
                         <div class="tab-pane" id="formfield">
                             <form role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-md-10" for="firstname">First Name:</label>
+                                    <label class="control-label col-md-10">First Name:</label>
                                     <div class=" col-md-5">
                                         <input type="text" class="form-control" placeholder="First Name">
                                     </div>
@@ -142,7 +142,7 @@
                                         <li class="glyphicon glyphicon-plus pull-right"></li>
                                         <li class="glyphicon glyphicon-pencil pull-right"></li>
                                     </ul>
-                                    <label  class="control-label col-md-10" for="lastname">Last Name:</label>
+                                    <label  class="control-label col-md-10">Last Name:</label>
                                     <div class=" col-md-5">
                                         <input type="text" class="form-control" placeholder="Last Name">
                                     </div>
@@ -152,7 +152,7 @@
                                         <li class="glyphicon glyphicon-plus pull-right"></li>
                                         <li class="glyphicon glyphicon-pencil pull-right"></li>
                                     </ul>
-                                    <label  class="control-label col-md-10" for="boa">Date of Birth:</label>
+                                    <label  class="control-label col-md-10">Date of Birth:</label>
                                     <div class = "col-md-5">
                                         <input type="date" class ="form-control" placeholder="Select Date">
                                     </div>
@@ -176,16 +176,16 @@
                                         <li class="glyphicon glyphicon-plus pull-right"></li>
                                         <li class="glyphicon glyphicon-pencil pull-right"></li>
                                     </ul>
-                                    <label class = "control-label col-md-10" for="roles">Roles:</label>
+                                    <label class = "control-label col-md-10">Roles:</label>
                                     <div class = "col-md-5">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Admin</label>
+                                            <label><input type="checkbox" value="role-admin" checked>Admin</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Student</label>
+                                            <label><input type="checkbox" value="role2-stud">Student</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">User</label>
+                                            <label><input type="checkbox" value="role3-user">User</label>
                                         </div>
 
                                     </div>
@@ -195,7 +195,7 @@
                                         <li class="glyphicon glyphicon-plus pull-right"></li>
                                         <li class="glyphicon glyphicon-pencil pull-right"></li>
                                     </ul>
-                                    <label class = "control-label col-md-10" for="license">License Aggreement:</label>
+                                    <label class = "control-label col-md-10">License Aggreement:</label>
                                     <div class = "col-md-5">
                                         <div class="radio">
                                             <label><input type="radio" name="license" checked>Yes</label>
