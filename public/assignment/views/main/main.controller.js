@@ -1,10 +1,11 @@
 /**
  * Created by mengxichen on 2/9/16.
  */
-var app = angular.module("FormBulderApp", []);
+(function(){
+    angular
+        .module("FormBuilderApp")
+        .controller("MainController", function($scope, $location) {
+            $scope.$location = $location;
+        });
+})();
 
-app.controller("MainController", MainController);
-
-function MainController() {
-
-}

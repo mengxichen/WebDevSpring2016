@@ -1,9 +1,16 @@
 /**
- * Created by mengxichen on 2/8/16.
+ * Created by mengxichen on 2/18/16.
  */
-var app = angular.module("FormBuilderApp",[]);
-app.controller("HeaderController",HeaderController);
+(function(){
+    angular
+        .module("FormBuilderApp")
+        .controller("HeaderController",HeaderController);
+        function HeaderController($scope,$rootScope) {
+            console.log("hi from header")
+            $scope.logout= logout;
+            function logout(){
+                $rootScope = null;
+            }
+        }
+})();
 
-function HeaderController(){
-    
-}

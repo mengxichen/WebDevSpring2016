@@ -1,0 +1,8 @@
+<div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">
+    <ul class="nav nav-sidebar" >
+        <li><a href="#/home"  ng-class = "{'active' : $location.url() == '/home'}">Home</a></li>
+        <li><a ng-show="user" href="#/profile" ng-class = "{'active' : $location.url() == '/profile'}">Profile</a></li>
+        <li><a ng-show="user && user.roles.indexOf('admin') >= 0" href="#/admin" ng-class = "{'active' : $location.url() == '/admin'}">Admin</a></li>
+        <li><a ng-show="user" href="#/forms" ng-class = "{'active' : $location.url() == '/forms'}">Forms</a></li>
+    </ul>
+</div>
