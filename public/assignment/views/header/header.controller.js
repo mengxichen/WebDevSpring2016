@@ -9,7 +9,7 @@
             console.log("hi from header")
             $scope.logout= logout;
             function logout(){
-                $rootScope = null;
+                $rootScope.user = null;
             }
         }
 })();

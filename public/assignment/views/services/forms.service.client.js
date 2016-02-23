@@ -34,7 +34,7 @@
             }
 
             forms.push(newForm);
-            newForm.success(callback);
+            callback(newForm);
         }
          function findAllFormsForUser(userId,callback){
              var foundForms = [];
@@ -43,7 +43,7 @@
                      foundForms.push(forms[i]);
                  }
              }
-             foundForms.success(callback);
+             callback(foundForms);
          }
 
         function deleteFormById(formId,callback){
@@ -52,14 +52,14 @@
                     forms.splice(k,1);
                 }
             }
-            forms.success(callback);
+            callback(forms);
         }
 
         function updateFormById(formId, newForm,callback){
             for (var i =0; i<forms.length;i++){
                 if(forms[i]._id == formId){
                     forms[i].title=newForm.title;
-                    fors[i].success(callback);
+                    callback(forms[i]);
                 }
             }
         }

@@ -47,11 +47,12 @@
                             "lastName":user.lastName,
                             "username":user.username,
                             "password":user.password,
-                            "roles":user.roles
+                            "roles":"student",
+                            "email" : user.email
             }
 
             users.push(newUser);
-            callback(users);
+            callback(newUser);
         }
 
         function deleteUserById(userId,callback){

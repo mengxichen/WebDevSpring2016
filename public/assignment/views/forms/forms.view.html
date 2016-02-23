@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td ><input ng-model="newForm.name" class="form-control"  type="text" placeholder="name"></td>
+                        <td ><input ng-model="newForm.title" class="form-control"  type="text" placeholder="name"></td>
                         <td >
                             <button ng-click="addForm(newForm)" type="button" class="btn btn-default" aria-label="glyphicon-plus">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -32,13 +32,13 @@
                     </tr>
 
                     <tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-                        <td>{{form.name}}</td>
+                        <td> {{form.title}} </td>
                         <td>
 
-                            <button ng-click="deleteForm($index)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                            <button ng-click="deleteForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
-                            <button ng-click="selectForm($index)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                            <button ng-click="selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                         </td>

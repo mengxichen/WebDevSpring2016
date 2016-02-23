@@ -11,8 +11,19 @@
 
             function register(user){
                 console.log("add new user")
-                $location.url("/profile");
-                $rootScope.user = user;
+
+                UserService.createUser(user,render);
+                function render(response){
+                    console.log(response);
+                    $rootScope.user=response;
+                    $location.url("/profile");
+                };
+
+                UserService.findAllUsers(callback);
+                function callback(response){
+                    console.log(response);
+                }
+
             }
         });
 

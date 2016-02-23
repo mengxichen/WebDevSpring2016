@@ -21,14 +21,12 @@
                 function render(response){
                     console.log(response);
                     $rootScope.user=response;
-                    $scope.user1 = {
-                        username: response.user.username,
-                        password: response.user.password,
-                        firstName: response.user.firstName,
-                        lastName: response.user.lastName,
-                        email: response.user.email
-                    };
                 };
+
+                UserService.findAllUsers(callback);
+                function callback(response){
+                    console.log(response);
+                }
 
 
             }
