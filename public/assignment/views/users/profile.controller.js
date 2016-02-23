@@ -21,7 +21,7 @@
                 function render(response){
                     console.log(response);
                     $rootScope.user=response;
-                };
+                }
 
                 UserService.findAllUsers(callback);
                 function callback(response){
