@@ -12,13 +12,13 @@
                 console.log("login user")
                 var username = user.username;
                 var password = user.password;
-                var getUser = UserService.findUserByUsernameAndPassword(username,password, render);
+                UserService.findUserByUsernameAndPassword(username,password, render);
 
-                    function render(response){
-                        console.log(response);
-                        $rootScope.user=response;
-                        $location.url("/profile");
-                    };
+                function render(response){
+                    console.log(response);
+                    $rootScope.user=response;
+                    $location.url("/profile");
+                };
 
 
             }
@@ -26,4 +26,4 @@
 
 
 
-} )();
+})();
