@@ -31,6 +31,10 @@
                     templateUrl:"views/users/register.view.html",
                     controller:"RegistrationController"
                 })
+                .when("/field",{
+                    templateUrl:"views/forms/field.view.html",
+                    controller:"FieldController"
+                })
                 .otherwise({
                     redirectTo: "/home"
                 });
