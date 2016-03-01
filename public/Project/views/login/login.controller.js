@@ -1,6 +1,6 @@
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("HomeServiceApp")
         .controller("LoginController", function ($scope,$rootScope,$location,UserService){
             console.log("here we are from login");
             $scope.login = login;

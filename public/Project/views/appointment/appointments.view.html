@@ -1,0 +1,55 @@
+
+<h1 class="page-header">Appointments</h1>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li><a href="#/profile">Profile</a></li>
+        <li class = "active"><a href="#appointments">Appointments</a></li>
+        <li ><a href="#/Reviews">Reviews</a></li>
+    </ul>
+    <div class="tab-content" >
+        <div id ="appointments" class="tab-pane active">
+            <div class=" table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-6">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            Form Name</th>
+                        <th class="col-md-4">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td ><input ng-model="newForm.title" class="form-control"  type="text" placeholder="name"></td>
+                        <td >
+                            <button ng-click="addForm(newForm)" type="button" class="btn btn-default" aria-label="glyphicon-plus">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <button ng-click="updateForm(newForm)" type="button" class="btn btn-default" aria-label="glyphicon-ok">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
+                        <td> {{form.title}} </td>
+                        <td>
+
+                            <button ng-click="deleteForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

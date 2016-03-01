@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("HomeServiceApp")
         .controller("RegistrationController", function ($scope,$rootScope,$location,UserService){
             console.log("here we are from register")
 
