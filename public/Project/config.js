@@ -6,9 +6,14 @@
         .module("HomeServiceApp")
         .config(function($routeProvider){
             $routeProvider
-                .when("/home",{
-                    templateUrl:"views/home/home.view.html",
-                    controller:"HomeController"
+                .when("/search",{
+                    templateUrl:"views/search/search.view.html",
+                    controller:"SearchController"
+                })
+
+                .when("/search/:type+location", {
+                    templateUrl: "search/search.view.html",
+                    controller: "SearchController"
                 })
                 .when("/profile",{
                     templateUrl:"views/users/profile.view.html",
@@ -27,11 +32,11 @@
                     controller:"RegistrationController"
                 })
                 .when("/appointments",{
-                    templateUrl:"views/appointment/appointments.view.html",
+                    templateUrl:"views/appointments/appointments.view.html",
                     controller:"AppointmentController"
                 })
                 .otherwise({
-                    redirectTo: "/home"
+                    redirectTo: "/search"
                 });
 
         });

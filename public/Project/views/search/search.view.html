@@ -1,0 +1,59 @@
+<div>
+    <div class="progress">
+        <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25"
+             aria-valuemin="0" aria-valuemax="100" style="width: 25%">
+            Select service!
+        </div>
+    </div>
+
+
+    <img src="images/pruning.jpg"class="img-circle"  width="100" height="100">
+    <img src="images/Carpet-Cleaning.png" class="img-circle"  width="100" height="100">
+    <img src="images/icon_02-300x300.png"  class="img-circle" width="100" height="100">
+    <img src="images/mQSiiZK.jpg" class="img-circle"  width="100" height="100">
+    <img src="images/plumbing-icon.png" class="img-circle"  width="100" height="100">
+
+    <p class="lead">Choose one of the home services that you need!</p>
+
+    <div>
+
+        <select name ="singleType" ng-model="service.type">
+            <option value="roof"></option>
+            <option value="Carpet"></option>
+            <option value="Plumbing"></option>
+            <option value="Gardening"></option>
+        </select>
+        </br></br>
+        <input ng-model="service.location" class="form-control" placeholder="city,State or zipcode">
+        </br>
+        <button type="button" ng-click = "search(service)"class="btn btn-default">Explore!</button>
+    </div>
+
+
+    <h3>Search Results</h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Business Name</th>
+                <th>Address</th>
+                <th>Rating</th>
+                <th>Categories</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="business in services">
+                <td>{{business.name}}</td>
+                <td>
+                    {{business.location}}
+                </td>
+                <td>{{business.rating}}</td>
+                <td>{{business.categories}}</td>
+                <td><button type="button" ng-click = "select(business)"class="btn btn-default">Select</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

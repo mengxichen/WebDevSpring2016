@@ -1,0 +1,24 @@
+{{business.name}}
+
+<h1>Make appointment for vendor {{business.name}}</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th class="col-md-6">
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+            Service</th>
+        <th class="col-md-4">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
+        <td> {{form.title}} </td>
+        <td>
+            <button ng-click="selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

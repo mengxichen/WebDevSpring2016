@@ -1,16 +1,23 @@
 /**
- * Created by mengxichen on 2/20/16.
+ * Created by mengxichen on 3/2/16.
  */
 (function() {
     angular
-        .module("FormBuilderApp")
+        .module("HomeServiceApp")
         .factory("FormService", FormService);
 
     function FormService(){
         var forms =[
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo",     "userId": 123},
-            {"_id": "020", "title": "CDs",      "userId": 234},
+            {"_id":"000", "title":"first appraisal","vendorId":321},
+            {"_id":"010", "title":"CarpetCleaning","vendorId":321},
+            {"_id":"020", "title":"Carpet Try Cleaning","vendorId":321},
+            {"_id":"021", "title":"first estimate","vendorId":421},
+            {"_id":"021", "title":"Water heater","vendorId":421},
+            {"_id":"022", "title":"fixing a leak","vendorId":421}
+
+
+
+
         ];
 
 
@@ -23,11 +30,11 @@
 
         return api;
 
-        function createFormForUser(userId, form, callback){
+        function createFormForUser(vendorId, form, callback){
             var newForm ={
                 "_id" : (new Date).getTime(),
                 "title" : form.title,
-                "userId":userId
+                "vendorId":vendorId
 
 
             }
@@ -35,15 +42,15 @@
             forms.push(newForm);
             callback(newForm);
         }
-         function findAllFormsForUser(userId,callback){
-             var foundForms = [];
-             for (var i = 0; i< forms.length;i++){
-                 if(forms[i].userId == userId){
-                     foundForms.push(forms[i]);
-                 }
-             }
-             callback(foundForms);
-         }
+        function findAllFormsForUser(vendorId,callback){
+            var foundForms = [];
+            for (var i = 0; i< forms.length;i++){
+                if(forms[i].vendorId == vendorId){
+                    foundForms.push(forms[i]);
+                }
+            }
+            callback(foundForms);
+        }
 
         function deleteFormById(formId,callback){
             for (var k =0; k<forms.length;k++){

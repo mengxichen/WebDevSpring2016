@@ -4,10 +4,10 @@
 (function(){
     angular
         .module("HomeServiceApp")
-        .controller("AppointmentController", AppointmentController);
+        .controller("FormController", FormController);
 
 
-            function AppointmentController($scope,$rootScope,$location,FormService){
+            function FormController($scope,$rootScope,$location,FormService){
                 console.log("here we are from form");
                 FormService.findAllFormsForUser($rootScope.user._id,
                     function(response){
