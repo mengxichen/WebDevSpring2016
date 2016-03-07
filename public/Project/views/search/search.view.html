@@ -32,22 +32,24 @@
 
     <h3>Search Results</h3>
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="results">
             <thead>
             <tr>
                 <th>Business Name</th>
                 <th>Address</th>
+                <th>Phone</th>
                 <th>Rating</th>
                 <th>Categories</th>
                 <th>Action</th>
             </tr>
             </thead>
-            <tbody>
-            <tr ng-repeat="business in services">
-                <td>{{business.name}}</td>
+            <tbody id="container">
+            <tr id = "template" ng-repeat="business in services">
+                <td><a href="#" class="link">{{business.name}}</a></td>
                 <td>
                     {{business.location}}
                 </td>
+                <td>{{business.phone}}</td>
                 <td>{{business.rating}}</td>
                 <td>{{business.categories}}</td>
                 <td><button type="button" ng-click = "select(business)"class="btn btn-default">Select</button></td>

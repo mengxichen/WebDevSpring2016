@@ -11,10 +11,6 @@
                     controller:"SearchController"
                 })
 
-                .when("/search/:type+location", {
-                    templateUrl: "search/search.view.html",
-                    controller: "SearchController"
-                })
                 .when("/profile",{
                     templateUrl:"views/users/profile.view.html",
                     controller:"ProfileController"
