@@ -107,21 +107,21 @@
                                 +comps[i].location.postal_code;
                         var phone = comps[i].phone;
                         var rating = comps[i].rating;
-                        var categories = comps[i].categories;
+
 
                         var tr = $("<tr>");
                         var nameTd = $("<td>" + name + "</td>");
                         var locationTd = $("<td>" + location + "</td>");
                         var phoneTd = $("<td>" + phone + "</td>");
                         var ratingTd = $("<td>" + rating + "</td>");
-                        var categoriesTd = $("<td>" + categories + "</td>");
+
                         var selectBtn  = $('<td><button type="button" ng-click = "select(business)"class="btn btn-default">Select</button></td>')
 
                         tr.append(nameTd);
                         tr.append(locationTd);
                         tr.append(phoneTd);
                         tr.append(ratingTd);
-                        tr.append(categoriesTd);
+
                         tr.append(selectBtn);
                         tbody.append(tr);
                     }
