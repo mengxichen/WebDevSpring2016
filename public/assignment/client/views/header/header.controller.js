@@ -5,11 +5,19 @@
     angular
         .module("FormBuilderApp")
         .controller("HeaderController",HeaderController);
-        function HeaderController($scope,$rootScope) {
+        function HeaderController(UserService,$location) {
+            var vm = this;
+            vm.logout = logout;
             console.log("hi from header")
-            $scope.logout= logout;
+            function init(){
+
+            }
+            init();
+
             function logout(){
-                $rootScope.user = null;
+                UserService.setCurrentUser(null);
+                $location.url("/home");
+
             }
         }
 })();

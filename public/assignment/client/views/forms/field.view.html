@@ -1,5 +1,3 @@
-
-
 <h1 class="page-header">Forms</h1>
 <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -7,109 +5,159 @@
         <li class = "active"><a href="#field">Fields</a></li>
     </ul>
 
-        <div class="tab-pane active" id="field">
-            <form role="form">
-                <div class="form-group">
-                    <label class="control-label col-md-10">First Name:</label>
-                    <div class=" col-md-5">
-                        <input type="text" class="form-control" placeholder="First Name">
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label  class="control-label col-md-10">Last Name:</label>
-                    <div class=" col-md-5">
-                        <input type="text" class="form-control" placeholder="Last Name">
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label  class="control-label col-md-10">Date of Birth:</label>
-                    <div class = "col-md-5">
-                        <input type="date" class ="form-control" placeholder="Select Date">
+    <div class="tab-pane active" id="field">
+        <form role="form">
+            <div class="form-group" id="formSortable" form-sortable form-axis="y">
+                <div ng-repeat="field in model.fields">
+                    <label class="control-label col-md-10">{{field.label}}</label>
+                    <div ng-switch on="field.type">
+                        <div ng-switch-when="TEXT" class = "col-md-5">
+                            <input type="text" class="form-control" placeholder="{{field.placeholder}}">
+                        </div>
+
+                        <div ng-switch-when="OPTIONS" class = "col-md-5">
+
+                            <select class="form-control">
+                                <div ng-repeat="option in field.options">
+                                    <option>{{field.label}}</option>
+                                </div>
+                            </select>
+                        </div>
+
+                        <div ng-switch-when="EMAIL" class = "col-md-5">
+                            <input type="email" class="form-control" placeholder="{{field.placeholder}}">
+
+                        </div>
+
+                        <div ng-switch-when="TEXTAREA" class = "col-md-5">
+
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+
+                        <div ng-switch-when="DATE" class = "col-md-5">
+                            <input type="date" class="form-control" placeholder="{{field.placeholder}}">
+                        </div>
+
+                        <div ng-switch-when="RADIO" class = "col-md-5">
+                            <div ng-repeat="option in field.options">
+                                <div class="radio">
+                                    <label><input type="radio" name=field.value checked>{{field.label}}</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div ng-switch-when="CHECKBOX" class = "col-md-5">
+                            <div ng-repeat="option in field.options">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="{{option.value}}" checked>{{option.label}}</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="dialog-1" title = "Single Line Field">
+                            <label for="label1" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label1">
+                            <label for="placeholder1" class="control-label">Placeholder</label>
+                            <input type="text" class="form-control" id = "placeholder1">
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+                        <div id="dialog-2" title = "Multiple Lines Field">
+                            <label for="label2" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label2">
+                            <label for="placeholder2" class="control-label">Placeholder</label>
+                            <input type="text" class="form-control" id = "placeholder2">
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+                        <div id="dialog-3" title = "Date Field">
+                            <label for="label3" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label3">
+
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+                        <div id="dialog-4" title = "Dropdown Field">
+                            <label for="label4" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label4">
+                            <label for="dropdown" class="control-label">Options</label>
+                            <textarea id="dropdown">
+                                1.These can be enter in a textarea,one option per line
+                                2.You can use the following format: LABEL:VALUE
+
+                            </textarea>
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+                        <div id="dialog-5" title = "Checkbox Field">
+                            <label for="label5" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label5">
+                            <label for="checkbox" class="control-label">Options</label>
+                            <textarea id="checkbox">
+                                1.These can be enter in a textarea,one option per line
+                                2.You can use the following format: LABEL:VALUE
+
+                            </textarea>
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+                        <div id="dialog-6" title = "Radio Button Field">
+                            <label for="label6" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="label6">
+                            <label for="radio" class="control-label">Options</label>
+                            <textarea id="radio">
+                                1.These can be enter in a textarea,one option per line
+                                2.You can use the following format: LABEL:VALUE
+
+                            </textarea>
+                            <button class="btn-default">cancel</button>
+                            <button class="btn-default">ok</button>
+                        </div>
+
+
                     </div>
 
                     <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
+                        <li class="glyphicon glyphicon-align-justify pull-right" ng-model="model.editDialog(field.type)"></li>
+                        <li class="glyphicon glyphicon-remove pull-right" ng-model="model.removeField(field)"></li>
+                        <li class="glyphicon glyphicon-plus pull-right" ng-model = "model.addField(field)"></li>
                         <li class="glyphicon glyphicon-pencil pull-right"></li>
                     </ul>
-                    <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
-                    <div class = "col-md-5">
-                        <select class="form-control" id="gender">
-                            <option>Female</option>
-                            <option>Male</option>
-                        </select>
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label class = "control-label col-md-10">Roles:</label>
-                    <div class = "col-md-5">
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role-admin" checked>Admin</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role2-stud">Student</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role3-user">User</label>
-                        </div>
+                </div>
 
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label class = "control-label col-md-10">License Aggreement:</label>
-                    <div class = "col-md-5">
-                        <div class="radio">
-                            <label><input type="radio" name="license" checked>Yes</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" name="license">No</label>
-                        </div>
 
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
+                <label class = "control-label col-md-10" for="newField">Add New Field:</label>
 
-                    <label class = "control-label col-md-10" for="newField">Add New Field:</label>
+                <div class="col-md-5">
+                    <select class="form-control" id="newField" ng-model="model.fields.fieldType"
+                            ng-options="item for item in items">
 
-                    <div class="col-md-5">
-                        <select class="form-control" id="newField">
-                            <option>Single Line Text</option>
-                            <option>Date</option>
-                            <option>Dropdown</option>
-                            <option>Checkboxes</option>
-                            <option>Radio buttons</option>
-                            <option>Paragraph Text Field</option>
-                        </select>
+                    </select>
+                    <div ng-switch on="model.fields.fieldType">
+                        <div ng-switch-default="Single Line Text Field" >Single Line Text Field</div>
+                        <div ng-switch-when="Multi Line Text Field">Multi Line Text Field</div>
+                        <div ng-switch-when="Date Field">Date Field</div>
+                        <div ng-switch-when="Dropdown Field">Dropdown Field</div>
+                        <div ng-switch-when="Checkboxes Field">Checkboxes Field</div>
+                        <div ng-switch-when="Radio Buttons Field">Radio Buttons Field</div>
                     </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
-                    </ul>
+
 
                 </div>
-            </form>
-        </div>
+                <ul class = "col-md-5">
+                    <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-model="model.addField(model.fields.fieldType)"></li>
+                </ul>
+
+            </div>
+        </form>
     </div>
 </div>
+
 
 

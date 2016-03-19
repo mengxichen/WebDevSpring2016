@@ -4,25 +4,26 @@
 (function(){
     angular
         .module("FormBuilderApp")
-        .controller("RegistrationController", function ($scope,$rootScope,$location,UserService){
+        .controller("RegistrationController", function ($location,UserService,FormService){
             console.log("here we are from register")
+            var vm = this;
+            vm.register = register;
 
-            $scope.register = register;
+            function init(){
+
+            }
+            init();
 
             function register(user){
                 console.log("add new users")
 
-                UserService.createUser(user,render);
-                function render(response){
-                    console.log(response);
-                    $rootScope.user=response;
-                    $location.url("/profile");
-                };
-
-                UserService.findAllUsers(callback);
-                function callback(response){
-                    console.log(response);
-                }
+                UserService
+                    .createUser(user)
+                    .then(function (response){
+                        console.log(response);
+                        UserService.setCurrentUser(response);
+                        $location.url("/profile");
+                    });
 
             }
         });

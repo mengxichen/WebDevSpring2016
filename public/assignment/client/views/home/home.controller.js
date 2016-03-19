@@ -9,6 +9,12 @@
 
             function HomeController(){
                 console.log("here we are from home")
+
+                function init(){
+
+                }
+
+                init();
         }
 
 

@@ -1,26 +1,45 @@
 (function(){
     angular
         .module("FormBuilderApp")
-        .controller("LoginController", function ($scope,$rootScope,$location,UserService){
-            console.log("here we are from login");
-            $scope.login = login;
-
-            function login(user){
-                console.log("login users")
-                var username = user.username;
-                var password = user.password;
-                UserService.findUserByUsernameAndPassword(username,password, render);
-
-                function render(response){
-                    console.log(response);
-                    $rootScope.user=response;
-                    $location.url("/profile");
-                }
+        .controller("LoginController", LoginController)
 
 
-            };
-        });
+    function LoginController ($location,
+                              UserService,
+                              FormService,
+                              $q
+    ) {
+        var vm = this;
+        console.log("here we are from login");
+        vm.login = login;
 
+        function init() {
 
+        }
+
+        init();
+
+        function login(user) {
+            if (!user) {
+                return;
+            }
+
+            UserService
+                .findUserByCredentials({
+                    username: user.username,
+                    password: user.password
+                })
+                .then(function (response) {
+                    if (response) {
+                        console.log(response);
+                        $location.url("/profile");
+                        UserService.setCurrentUser(response)
+
+                    }
+
+                });
+        }
+
+    }
 
 })();

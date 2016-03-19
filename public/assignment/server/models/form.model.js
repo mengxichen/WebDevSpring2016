@@ -9,14 +9,20 @@ module.exports = function(){
         findFormByFormid : findFormByFormid,
         updateForm : updateForm,
         deleteFormByFormId : deleteFormByFormId,
-        findFormByTitle : findFormByTitle
+        findFormByTitle : findFormByTitle,
+        findFormsByUserId:findFormsByUserId,
+        findFieldByFieldIdFormId:findFieldByFieldIdFormId,
+        deleteFieldByFormIdFieldId:deleteFieldByFormIdFieldId,
+        createFieldByFormId:createFieldByFormId,
+        updateFieldByFormIdFieldId:updateFieldByFormIdFieldId
 
     }
 
     return api;
 
-    function createForm(form){
+    function createForm(userId,form){
         form._id = "ID_" + (new Date()).getTime();
+        form.userId = userId;
         mock.push(form);
         return form;
     }
@@ -40,9 +46,11 @@ module.exports = function(){
             if(mock[f]._id === formId){
                 mock[f].title = form.title;
                 mock[f].fields = form.fields;
-                break;
+                return mock[f];
             }
         }
+        return null;
+
     }
 
     function deleteFormByFormId(formId){
@@ -63,11 +71,12 @@ module.exports = function(){
         return null;
     }
 
-    function findFormsByUserid(userId){
+    function findFormsByUserId(userId){
         forms = [];
         for(var f in mock){
             if(mock[f].userId === userId){
                 forms.push(mock[f]);
+
             }
         }
 
@@ -96,11 +105,13 @@ module.exports = function(){
                 for (var i in mock[f].fields) {
                     if (mock[f].fields[i]._id === fieldId) {
                         mock[f].fields.splice(i, 1);
+                        return mock[f].fields;
 
                     }
                 }
             }
         }
+        return null;
 
 
     }
@@ -113,6 +124,8 @@ module.exports = function(){
                 return mock[f].fields;
             }
         }
+
+        return null;
     }
 
     function updateFieldByFormIdFieldId(formId,fieldId,field){
@@ -127,6 +140,7 @@ module.exports = function(){
                 }
             }
         }
+        return null;
 
     }
 

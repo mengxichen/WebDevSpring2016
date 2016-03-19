@@ -7,7 +7,15 @@
         .controller("SidebarController", SidebarController);
 
             function SidebarController(){
+                var vm =this;
+
                 console.log("hi from sidebar")
+
+                function init(){
+
+                }
+
+                init();
             }
 
 })();

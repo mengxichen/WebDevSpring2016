@@ -5,12 +5,12 @@ var mock  = require("./user.mock.json");
 module.exports = function(){
     var api = {
         createUser : createUser,
-        findAll : findAll,
+        findAllUsers : findAllUsers,
         findUserById : findUserById,
         updateUser : updateUser,
         deleteUser : deleteUser,
         findUserByUsername : findUserByUsername,
-        findUserByCredentials : findUserByCredentials,
+        findUserByCredentials : findUserByCredentials
 
 
     }
@@ -26,7 +26,7 @@ module.exports = function(){
     }
 
     //return collection
-    function findAll(){
+    function findAllUsers(){
         return mock;
     }
 
@@ -44,14 +44,17 @@ module.exports = function(){
     //update the instance
     function updateUser(userId,user){
         for(var u in mock){
-            if(mock[u]._id === userId) {
+            if(mock[u]._id == userId) {
                 mock[u].firstName = user.firstName;
                 mock[u].lastName = user.lastName;
                 mock[u].username = user.username;
                 mock[u].password = user.password;
-                break;
+                mock[u].email = user.email;
+                return mock[u];
+
             }
         }
+        return null;
     }
 
     function deleteUser(userId){
@@ -69,16 +72,18 @@ module.exports = function(){
                 return mock[u];
             }
         }
+        return null;
     }
 
-    function findUserByCredentials(credentials){
+    function findUserByCredentials(username,password){
         for(var u in mock){
-            if(mock[u].username === credentials.username &&
-                mock[u].password === credentials.password){
+            if(mock[u].username === username &&
+                mock[u].password === password){
                 return mock[u];
             }
 
         }
+        return null;
     }
 
 

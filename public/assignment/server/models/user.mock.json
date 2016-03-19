@@ -4,31 +4,36 @@
     "firstName": "Alice",
     "lastName": "Wonderland",
     "username": "alice",
-    "password": "alice"
+    "password": "alice",
+    "email":"alice@email.com"
   },
   {"_id": 234,
     "firstName": "Bob",
     "lastName": "Hope",
     "username": "bob",
-    "password": "bob"
+    "password": "bob",
+    "email":"bob@email.com"
   },
   {"_id": 345,
     "firstName": "Charlie",
     "lastName": "Brown",
     "username": "charlie",
-    "password": "charlie"
+    "password": "charlie",
+    "email":"charlie@email.com"
   },
   {"_id": 456,
     "firstName": "Dan",
     "lastName": "Craig",
     "username": "dan",
-    "password": "dan"
+    "password": "dan",
+    "email":"dan@email.com"
   },
   {
     "_id": 567,
     "firstName": "Edward",
     "lastName": "Norton",
     "username": "ed",
-    "password": "ed"
+    "password": "ed",
+    "email":"ed@email.com"
   }
 ]
