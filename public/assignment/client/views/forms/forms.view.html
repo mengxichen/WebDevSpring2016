@@ -3,7 +3,7 @@
 <div class="tabbable">
     <ul class="nav nav-tabs">
         <li class = "active"><a href="#form">Forms</a></li>
-        <li ><a href="#/field">Fields</a></li>
+        <li ><a href="#">Fields</a></li>
     </ul>
     <div class="tab-content" >
         <div id ="form" class="tab-pane active">
@@ -19,25 +19,25 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td ><input ng-model="newForm.title" class="form-control"  type="text" placeholder="name"></td>
+                        <td ><input ng-model="model.newForm.title" class="form-control"  type="text" placeholder="name"></td>
                         <td >
-                            <button ng-click="addForm(newForm)" type="button" class="btn btn-default" aria-label="glyphicon-plus">
+                            <button ng-click="model.addForm(model.newForm)" type="button" class="btn btn-default" aria-label="glyphicon-plus">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
-                            <button ng-click="updateForm(newForm)" type="button" class="btn btn-default" aria-label="glyphicon-ok">
+                            <button ng-click="model.updateForm(model.newForm)" type="button" class="btn btn-default" aria-label="glyphicon-ok">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </button>
                         </td>
                     </tr>
 
-                    <tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-                        <td> {{form.title}} </td>
+                    <tr ng-repeat="form in model.forms" ng-class="{'success' : $index == selectedFormIndex}">
+                        <td><a href="#/field/{{form._id}}" >{{form.title}}</a> </td>
                         <td>
 
-                            <button ng-click="deleteForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                            <button ng-click="model.deleteForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
-                            <button ng-click="selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                            <button ng-click="model.selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                         </td>

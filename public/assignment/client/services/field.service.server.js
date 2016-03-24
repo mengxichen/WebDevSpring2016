@@ -71,7 +71,8 @@
 
         function updateField(formId,fieldId,field){
             var deferred = $q.defer();
-
+            console.log("from client service field")
+            console.log(field);
             $http
                 .put("/api/assignment/form/"+formId + "/field/"+ fieldId,field)
                 .success(function(fields){

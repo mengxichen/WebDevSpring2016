@@ -21,9 +21,9 @@
             var deferred = $q.defer();
 
             $http
-                .post("/api/assignment/user/" + userId + "form",form)
-                .success(function(form){
-                    deferred.resolve(form);
+                .post("/api/assignment/user/" + userId + "/form",form)
+                .success(function(forms){
+                    deferred.resolve(forms);
                 });
 
             return deferred.promise;
@@ -33,7 +33,7 @@
              var deferred = $q.defer();
 
              $http
-                 .get("/api/assignment/user/" + userId+"/form")
+                 .get("/api/assignment/user/" + userId +"/form")
                  .success(function(forms){
                      deferred.resolve(forms);
                  });

@@ -1,7 +1,7 @@
 /**
  * Created by mengxichen on 3/10/16.
  */
-module.exports = function(app,formModel){
+module.exports = function(app,userModel,formModel){
     app.get("/api/assignment/user/:userId/form", findFormsByUserId);
     app.get("/api/assignment/form/:formId", findFormByFormId);
     app.delete("/api/assignment/form/:formId", deleteFormByFormId);
@@ -24,8 +24,8 @@ module.exports = function(app,formModel){
 
     function deleteFormByFormId(req,res){
         var formId = req.params.formId;
-        formModel.deleteFormByFormId(formId);
-        res.status(200);
+        var forms = formModel.deleteFormByFormId(formId);
+        res.status(200).json(forms);
 
     }
 
@@ -39,8 +39,8 @@ module.exports = function(app,formModel){
     function updateFormByformId(req,res){
         var formId = req.params.formId;
         var form = req.body;
-        formModel.updateForm(formId,form);
-        res.status(200);
+        var form = formModel.updateForm(formId,form);
+        res.status(200).json(form);
     }
 
 }

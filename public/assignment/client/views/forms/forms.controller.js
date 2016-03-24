@@ -7,10 +7,8 @@
         .controller("FormController", FormController);
 
 
-            function FormController($rootScope,
-                                    $location,
-                                    FormService,
-                                    UserService){
+            function FormController($location,$rootScope,
+                                    FormService,FieldService){
 
                 var vm = this;
 
@@ -18,6 +16,7 @@
                 vm.updateForm = updateForm;
                 vm.deleteForm = deleteForm;
                 vm.selectForm = selectForm;
+
 
 
                 function init(){
@@ -34,17 +33,16 @@
                 init();
 
 
-
                 function addForm(form){
                     FormService
-                        .createFormForUser($rootScope.user._id,form)
+                        .createFormForUser($rootScope.currentUser._id,form)
                         .then(function (response){
                             console.log(response);
-                            vm.newForm={}
+                            vm.newForm=null;
                         });
 
                     FormService
-                        .findAllFormsForUser($rootScope.user._id)
+                        .findAllFormsForUser($rootScope.currentUser._id)
                         .then(function(response){
                             console.log(response);
                             vm.forms= response;
@@ -52,18 +50,19 @@
 
                 }
 
-                function updateForm(newform){
-                    var formId = newform._id;
+                function updateForm(form){
+                    var formId = form._id;
                     FormService
-                        .updateFormById(formId, newform)
+                        .updateFormById(formId, form)
                         .then(function (response){
                             console.log(response);
-                            vm.newForm={}
+                            vm.newForm=null;
+                            console.log(vm.newForm);
                         });
 
 
                     FormService
-                        .findAllFormsForUser($rootScope.user._id)
+                        .findAllFormsForUser($rootScope.currentUser._id)
                         .then(function(response){
                             console.log(response);
                             vm.forms= response;
@@ -77,12 +76,12 @@
                         .then(function (response){
                             console.log(response);
 
-                        })
+                        });
 
 
 
                     FormService
-                        .findAllFormsForUser($rootScope.user._id)
+                        .findAllFormsForUser($rootScope.currentUser._id)
                         .then(function(response) {
                             console.log(response);
                             vm.forms = response;
@@ -96,8 +95,11 @@
                     vm.newForm = {
                         _id: form._id,
                         title: form.title,
-                        userId:form.userId
+                        userId:form.userId,
+                        fields: form.fields
                     };
+
+
                 }
         }
 

@@ -7,25 +7,25 @@
 
     <div class="tab-pane active" id="field">
         <form role="form">
-            <div class="form-group" id="formSortable" form-sortable form-axis="y">
+            <div class="form-group" id="tbody-sortable" form-sortable form-axis="y">
                 <div ng-repeat="field in model.fields">
                     <label class="control-label col-md-10">{{field.label}}</label>
                     <div ng-switch on="field.type">
                         <div ng-switch-when="TEXT" class = "col-md-5">
-                            <input type="text" class="form-control" placeholder="{{field.placeholder}}">
+                            <input type="TEXT" class="form-control" placeholder="{{field.placeholder}}">
                         </div>
 
                         <div ng-switch-when="OPTIONS" class = "col-md-5">
 
                             <select class="form-control">
-                                <div ng-repeat="option in field.options">
-                                    <option>{{field.label}}</option>
-                                </div>
+                                <option ng-repeat="option in field.options"> {{option.label}}
+
+                                </option>
                             </select>
                         </div>
 
                         <div ng-switch-when="EMAIL" class = "col-md-5">
-                            <input type="email" class="form-control" placeholder="{{field.placeholder}}">
+                            <input type="EMAIL" class="form-control" placeholder="{{field.placeholder}}">
 
                         </div>
 
@@ -35,13 +35,13 @@
                         </div>
 
                         <div ng-switch-when="DATE" class = "col-md-5">
-                            <input type="date" class="form-control" placeholder="{{field.placeholder}}">
+                            <input type="DATE" class="form-control" placeholder="{{field.placeholder}}">
                         </div>
 
                         <div ng-switch-when="RADIO" class = "col-md-5">
                             <div ng-repeat="option in field.options">
-                                <div class="radio">
-                                    <label><input type="radio" name=field.value checked>{{field.label}}</label>
+                                <div class="RADIO">
+                                    <label><input type="radio" name=option.value checked>{{option.label}}</label>
                                 </div>
                             </div>
 
@@ -49,112 +49,130 @@
 
                         <div ng-switch-when="CHECKBOX" class = "col-md-5">
                             <div ng-repeat="option in field.options">
-                                <div class="checkbox">
+                                <div class="CHECKBOX">
                                     <label><input type="checkbox" value="{{option.value}}" checked>{{option.label}}</label>
                                 </div>
                             </div>
                         </div>
-
-                        <div id="dialog-1" title = "Single Line Field">
-                            <label for="label1" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label1">
-                            <label for="placeholder1" class="control-label">Placeholder</label>
-                            <input type="text" class="form-control" id = "placeholder1">
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-                        <div id="dialog-2" title = "Multiple Lines Field">
-                            <label for="label2" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label2">
-                            <label for="placeholder2" class="control-label">Placeholder</label>
-                            <input type="text" class="form-control" id = "placeholder2">
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-                        <div id="dialog-3" title = "Date Field">
-                            <label for="label3" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label3">
-
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-                        <div id="dialog-4" title = "Dropdown Field">
-                            <label for="label4" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label4">
-                            <label for="dropdown" class="control-label">Options</label>
-                            <textarea id="dropdown">
-                                1.These can be enter in a textarea,one option per line
-                                2.You can use the following format: LABEL:VALUE
-
-                            </textarea>
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-                        <div id="dialog-5" title = "Checkbox Field">
-                            <label for="label5" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label5">
-                            <label for="checkbox" class="control-label">Options</label>
-                            <textarea id="checkbox">
-                                1.These can be enter in a textarea,one option per line
-                                2.You can use the following format: LABEL:VALUE
-
-                            </textarea>
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-                        <div id="dialog-6" title = "Radio Button Field">
-                            <label for="label6" class="control-label">Label</label>
-                            <input type="text" class="form-control" id="label6">
-                            <label for="radio" class="control-label">Options</label>
-                            <textarea id="radio">
-                                1.These can be enter in a textarea,one option per line
-                                2.You can use the following format: LABEL:VALUE
-
-                            </textarea>
-                            <button class="btn-default">cancel</button>
-                            <button class="btn-default">ok</button>
-                        </div>
-
-
                     </div>
 
                     <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right" ng-model="model.editDialog(field.type)"></li>
-                        <li class="glyphicon glyphicon-remove pull-right" ng-model="model.removeField(field)"></li>
-                        <li class="glyphicon glyphicon-plus pull-right" ng-model = "model.addField(field)"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                        <li class="glyphicon glyphicon-align-justify pull-right" ></li>
+                        <li class="glyphicon glyphicon-remove pull-right" ng-click="model.removeField(field)"></li>
+                        <li class="glyphicon glyphicon-plus pull-right" ng-click = "model.addField(field.type)"></li>
+                        <li class="glyphicon glyphicon-pencil pull-right" ng-click="model.editDialog(field)"></li>
                     </ul>
-                </div>
+                 </div>
+            </div>
 
 
-                <label class = "control-label col-md-10" for="newField">Add New Field:</label>
+            <hr/>
 
-                <div class="col-md-5">
-                    <select class="form-control" id="newField" ng-model="model.fields.fieldType"
-                            ng-options="item for item in items">
+            <!-- Modal -->
+            <div class="modal fade" id="dialog-1" role="dialog">
+                <div class="modal-dialog">
 
-                    </select>
-                    <div ng-switch on="model.fields.fieldType">
-                        <div ng-switch-default="Single Line Text Field" >Single Line Text Field</div>
-                        <div ng-switch-when="Multi Line Text Field">Multi Line Text Field</div>
-                        <div ng-switch-when="Date Field">Date Field</div>
-                        <div ng-switch-when="Dropdown Field">Dropdown Field</div>
-                        <div ng-switch-when="Checkboxes Field">Checkboxes Field</div>
-                        <div ng-switch-when="Radio Buttons Field">Radio Buttons Field</div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{model.fieldType}}</h4>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" ng-model="model.editField.label">
+                                <label class="control-label">Placeholder</label>
+                                <input type="text" class="form-control" ng-model="model.editField.placeholder">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.editField)"><span class="glyphicon glyphicon-okay"></span> ok</button>
+
+                        </div>
                     </div>
 
+                </div>
+            </div>
+
+
+
+            <div class="modal fade" id="dialog-3" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{model.fieldType}}</h4>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" >
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> ok</button>
+
+                        </div>
+                    </div>
 
                 </div>
-                <ul class = "col-md-5">
-                    <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-model="model.addField(model.fields.fieldType)"></li>
-                </ul>
+            </div>
+
+
+
+            <div class="modal fade" id="dialog-4" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{model.fieldType}}</h4>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div  >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" >
+                                <label class="control-label">Options</label>
+                                <textarea class="form-control" rows="5">1.These can be enter in a textarea,one option per line2.You can use the following format: LABEL:VALUE
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> ok</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <label class = "control-label col-md-10">Add New Field:</label>
+
+            <div class="col-md-5">
+                <select id="newField">
+                    <option value="TEXT">Single Line Text Field</option>
+                    <option value="TEXTAREA" selected="selected">Multi Line Text Field</option>
+                    <option value="DATE">Date Field</option>
+                    <option value="DROPDOWN">Dropdown Field</option>
+                    <option value="CHECKBOX">Checkboxes Field</option>
+                    <option value="RADIO">Radio Buttons Field</option>
+                </select>
 
             </div>
+
+            <ul class = "col-md-5">
+                <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-click="model.addNewField()"></li>
+            </ul>
+
         </form>
     </div>
 </div>

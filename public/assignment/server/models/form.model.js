@@ -24,6 +24,7 @@ module.exports = function(){
         form._id = "ID_" + (new Date()).getTime();
         form.userId = userId;
         mock.push(form);
+        console.log(form);
         return form;
     }
 
@@ -72,14 +73,17 @@ module.exports = function(){
     }
 
     function findFormsByUserId(userId){
+        console.log(userId);
+        console.log("here here here");
         forms = [];
+
         for(var f in mock){
-            if(mock[f].userId === userId){
+            if(mock[f].userId == userId){
                 forms.push(mock[f]);
 
             }
         }
-
+        console.log(forms);
         return forms;
     }
 
@@ -101,10 +105,12 @@ module.exports = function(){
 
     function deleteFieldByFormIdFieldId(formId,fieldId) {
         for (var f in mock) {
-            if (mock[f]._id === formId) {
+            if (mock[f]._id == formId) {
                 for (var i in mock[f].fields) {
-                    if (mock[f].fields[i]._id === fieldId) {
+                    console.log(mock[f].fields);
+                    if (mock[f].fields[i]._id == fieldId) {
                         mock[f].fields.splice(i, 1);
+                        console.log(mock[f].fields)
                         return mock[f].fields;
 
                     }
@@ -133,7 +139,29 @@ module.exports = function(){
             if (mock[f]._id === formId) {
                 for (var i in mock[f].fields) {
                     if (mock[f].fields[i]._id === fieldId) {
-                        mock[f].fields[i] = field;
+                        var type = mock[f].fields[i].type;
+                        if( type == "TEXT" || type =="TEXTAREA"){
+                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                                "label": field.label,
+                                "type": type,
+                                "placeholder": field.placeholder};
+                        }else if(type == "OPTIONS" || type == "CHECKBOXE" || type == "RADIO"){
+                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                                "label": field.label,
+                                "type": type,
+                                "placeholder": field.placeholder};
+                        }else{
+                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                                "label": field.label,
+                                "type": type};
+                        }
+                        
+
+
+
+
+                        console.log("from update fields");
+                        console.log(mock[f].fields);
                         return mock[f].fields;
 
                     }
