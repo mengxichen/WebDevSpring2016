@@ -141,21 +141,31 @@ module.exports = function(){
                     if (mock[f].fields[i]._id === fieldId) {
                         var type = mock[f].fields[i].type;
                         if( type == "TEXT" || type =="TEXTAREA"){
-                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                            mock[f].fields[i] =
+                            {
+                                "_id": mock[f].fields[i]._id,
                                 "label": field.label,
                                 "type": type,
-                                "placeholder": field.placeholder};
+                                "placeholder": field.placeholder
+                            };
                         }else if(type == "OPTIONS" || type == "CHECKBOXE" || type == "RADIO"){
-                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                            console.log(field.options);
+                            mock[f].fields[i] =
+                            {
+                                "_id": mock[f].fields[i]._id,
                                 "label": field.label,
                                 "type": type,
-                                "placeholder": field.placeholder};
+                                "options": processOptions(field.options)
+                            };
                         }else{
-                            mock[f].fields[i] = {"_id": mock[f].fields[i]._id,
+                            mock[f].fields[i] =
+                            {
+                                "_id": mock[f].fields[i]._id,
                                 "label": field.label,
-                                "type": type};
+                                "type": type
+                            };
                         }
-                        
+
 
 
 
@@ -170,6 +180,18 @@ module.exports = function(){
         }
         return null;
 
+    }
+
+    function processOptions(s){
+        //'washington:wa\nSeattle:SEATAC'
+        var arr = s.split("\n");
+        var options = [];
+        for ( i = 0; i < arr.length; i++){
+            var pairArr = arr[i].split(":");
+            options.push({"label": pairArr[0], "value": pairArr[1]});
+        }
+
+        return options;
     }
 
 }

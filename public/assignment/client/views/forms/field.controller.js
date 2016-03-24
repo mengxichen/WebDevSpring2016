@@ -53,9 +53,10 @@
             var fieldId = field._id;
             var fieldType = field.type;
             vm.fieldType = fieldType;
+            vm.fieldId = fieldId;
             if (fieldType == "TEXT" || fieldType == "TEXTAREA") {
                 $("#dialog-1").modal();
-                vm.fieldId = fieldId;
+
             } else if (fieldType == "OPTIONS" || fieldType == "CHECKBOXE" || fieldType == "RADIO") {
                 $("#dialog-4").modal();
             }else {
