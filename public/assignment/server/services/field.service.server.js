@@ -3,7 +3,7 @@
  */
 module.exports = function(app,userModel,formModel) {
     app.get("/api/assignment/form/:formId/field", findFieldsByFormId);
-    app.get("/api/assignment/form/:formId/form/field/:fieldId", findFieldByFieldIdFormId);
+    app.get("/api/assignment/form/:formId/field/:fieldId", findFieldByFieldIdFormId);
     app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFieldByFormIdFieldId);
     app.post("/api/assignment/form/:formId/field", createFieldByFormId);
     app.put("/api/assignment/form/:formId/field/:fieldId", updateFieldByFormIdFieldId);

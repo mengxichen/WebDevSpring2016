@@ -6,7 +6,7 @@
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
-    function FormService($http,$q,$rootScope){
+    function FormService($http,$q){
 
         var api = {
             createFormForUser:createFormForUser,

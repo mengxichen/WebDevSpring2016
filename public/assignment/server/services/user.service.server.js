@@ -2,7 +2,8 @@
  * Created by mengxichen on 3/10/16.
  */
 module.exports = function(app,userModel,formModel){
-    app.get("/api/assignment/user?username=username",findUserByUsername);
+    //    app.get("/api/assignment/user?username=username",findUserByUsername);
+    app.get("/api/assignment/user",findUserByUsername);
     //app.get("/api/assignment/user?username=username&password=password",findUserByCredentials);
     app.get("/api/assignment/user",findUserByCredentials);
     app.post("/api/assignment/user", createUser);
@@ -40,7 +41,7 @@ module.exports = function(app,userModel,formModel){
         var username = req.query.username;
         var password = req.query.password;
         var user = userModel.findUserByCredentials(username,password)
-        res.json(user);
+        res.status(200).json(user);
     }
 
     function updateUserById(req,res){

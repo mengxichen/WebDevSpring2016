@@ -6,7 +6,7 @@
         .module("FormBuilderApp")
         .factory("FieldService",fieldService);
 
-    function fieldService($http,$q,$rootScope){
+    function fieldService($http,$q){
         var api = {
             createFieldForForm : createFieldForForm,
             getFieldsForForm : getFieldsForForm,
