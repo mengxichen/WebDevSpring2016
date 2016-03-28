@@ -12,7 +12,8 @@
             getFieldsForForm : getFieldsForForm,
             getFieldForForm : getFieldForForm,
             deleteFieldFromForm : deleteFieldFromForm,
-            updateField : updateField
+            updateField : updateField,
+            updateOrder:updateOrder
 
         };
 
@@ -75,6 +76,17 @@
             console.log(field);
             $http
                 .put("/api/assignment/form/"+formId + "/field/"+ fieldId,field)
+                .success(function(fields){
+                    deferred.resolve(fields);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateOrder(formId,fields){
+            var deferred = $q.defer();
+            $http
+                .put("/api/assignment/form/"+formId + "/field", fields)
                 .success(function(fields){
                     deferred.resolve(fields);
                 });

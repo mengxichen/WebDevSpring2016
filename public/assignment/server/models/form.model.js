@@ -2,7 +2,10 @@
  * Created by mengxichen on 3/9/16.
  */
 var mock = require("./form.mock.json");
-module.exports = function(){
+module.exports = function(mongoose, db){
+    var FormSchema = require("./form.schema.server.js")(mongoose);
+    var FieldSchema = require("./field.schema.server.js")(mongoose);
+
     var api = {
         createForm : createForm,
         findAllForms : findAllForms,
@@ -14,7 +17,8 @@ module.exports = function(){
         findFieldByFieldIdFormId:findFieldByFieldIdFormId,
         deleteFieldByFormIdFieldId:deleteFieldByFormIdFieldId,
         createFieldByFormId:createFieldByFormId,
-        updateFieldByFormIdFieldId:updateFieldByFormIdFieldId
+        updateFieldByFormIdFieldId:updateFieldByFormIdFieldId,
+        updateOrder:updateOrder
 
     }
 
@@ -192,6 +196,17 @@ module.exports = function(){
         }
 
         return options;
+    }
+
+    function updateOrder(formId,fields){
+        for (var f in mock) {
+            if(mock[f]._id === formId){
+                mock[f].fields = fields;
+                return mock[f].fields;
+            }
+        }
+
+        return null;
     }
 
 }

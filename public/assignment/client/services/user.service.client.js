@@ -77,8 +77,8 @@
 
             $http
                 .delete("/api/assignment/user/" + userId)
-                .success(function(user){
-                    deferred.resolve(user);
+                .success(function(users){
+                    deferred.resolve(users);
                 });
 
             return deferred.promise;

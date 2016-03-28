@@ -15,8 +15,19 @@ module.exports = function(app,userModel,formModel){
 
     function createUser(req,res){
         var user = req.body;
-        var newUser = userModel.createUser(user);
-        res.status(200).json(newUser);
+        user = userModel.createUser(user);
+        res.status(200).json(user);
+
+        /*user=userModel.createUser(user)
+            .then(
+                function(doc){
+                    req.session.currentUser=doc;
+                    res.json(user);
+                },
+                function (err){
+                    res.status(400).send(err);
+                }
+            );*/
     }
 
     function findAllUsers(req,res){
@@ -28,6 +39,15 @@ module.exports = function(app,userModel,formModel){
         var userId = req.params.id;
         var user = userModel.findUserById(userId);
         res.status(200).json(user);
+        /*var user= userModel.findUserById(userId)
+            .then(
+                function (doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )*/
     }
 
 
@@ -40,8 +60,20 @@ module.exports = function(app,userModel,formModel){
     function findUserByCredentials(req,res){
         var username = req.query.username;
         var password = req.query.password;
-        var user = userModel.findUserByCredentials(username,password)
+        var user = userModel.findUserByCredentials(username,password);
         res.status(200).json(user);
+       /* var user= userModel.findUserByCredentials(username,password)
+            .then(
+                function(doc){
+                    req.session.currentUser = doc;
+                    res.json(doc);
+                },
+
+                function(err){
+                    res.status(400).send(err);
+                }
+            )*/
+
     }
 
     function updateUserById(req,res){
@@ -54,8 +86,7 @@ module.exports = function(app,userModel,formModel){
 
     function deleteUserById(req,res){
         var userId =  req.params.id;
-        userModel.deleteUser(userId);
-        var users = userModel.findAllUsers();
+        var users = userModel.deleteUser(userId);
         res.status(200).json(users);
     }
 }

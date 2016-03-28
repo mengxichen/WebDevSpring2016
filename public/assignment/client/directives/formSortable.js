@@ -22,6 +22,7 @@
                     scope.model.fields[start] = scope.model.fields[end];
                     scope.model.fields[end] = temp;
                     scope.$apply();
+                    scope.model.updateOrder(scope.model.formId,scope.model.fields);
 
 
                 }
