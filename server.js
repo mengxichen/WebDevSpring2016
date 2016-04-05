@@ -10,7 +10,7 @@ var mongoose        = require('mongoose');
 var LocalStrategy   = require('passport-local').Strategy;
 
 // default to a 'localhost' configuration:
-var connection_string = 'mongodb://127.0.0.1:27017/cs5610spring2016';
+var connection_string = 'mongodb://127.0.0.1:27017/cs5610';
 
 
 app.use(bodyParser.json());
@@ -38,7 +38,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 
 var db = mongoose.connect(connection_string);
 
-
+console.log(mongoose);
 app.listen(port, ipaddress);
 
 require("./public/assignment/server/app.js")(app,mongoose,db);
