@@ -28,12 +28,13 @@
 
 
         function init(){
+
             FieldService.getFieldsForForm(formId)
                 .then(function(response){
-                    if(response){
-                        console.log(response);
-                        vm.fields = response;
-                    }
+                    console.log("from field controller")
+                    console.log(response);
+                    vm.fields = response;
+
                 });
 
         }
@@ -54,7 +55,7 @@
             var fieldId = field._id;
             var fieldType = field.type;
             vm.fieldType = fieldType;
-            vm.fieldId = fieldId;
+            vm.fieldId = fieldId;//object
             if (fieldType == "TEXT" || fieldType == "TEXTAREA") {
                 $("#dialog-1").modal();
 
@@ -65,45 +66,49 @@
             }
         }
 
-        function updateField(fieldId, field){
+        function updateField(fieldId, field,fieldType){
+            field.type = fieldType;
+            fieldId = fieldId.toString();
             FieldService
                 .updateField(formId,fieldId,field)
                 .then(function(response){
                     if(response){
                         console.log(response);
-                        vm.fields= response;
+                        vm.fields = response.fields;
+
                     }
-                })
+                });
+
         }
 
         function addField(fieldType){
             var field;
             if(fieldType =="TEXT"){
-                field = {"_id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
+                field = {"label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
 
             }else if(fieldType == "TEXTAREA"){
-                field = {"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
+                field = {"label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
 
             }else if(fieldType == "DATE") {
-                field = {"_id": null, "label": "New Date Field", "type": "DATE"};
+                field = {"label": "New Date Field", "type": "DATE"};
             }else if(fieldType == "EMAIL"){
-                field  = {"_id": null, "label": "New Text Field", "type": "EMAIL", "placeholder": "EMAIL"};
+                field  = {"label": "New Text Field", "type": "EMAIL", "placeholder": "EMAIL"};
             }else if(fieldType == "OPTIONS"){
-                field = {"_id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
+                field = {"label": "New Dropdown", "type": "OPTIONS", "options": [
                     {"label": "Option 1", "value": "OPTION_1"},
                     {"label": "Option 2", "value": "OPTION_2"},
                     {"label": "Option 3", "value": "OPTION_3"}
                 ]};
 
             }else if(fieldType == "CHECKBOXE"){
-                field = {"_id": null, "label": "New Checkboxes", "type": "CHECKBOXE", "options": [
+                field = {"label": "New Checkboxes", "type": "CHECKBOXE", "options": [
                     {"label": "Option A", "value": "OPTION_A"},
                     {"label": "Option B", "value": "OPTION_B"},
                     {"label": "Option C", "value": "OPTION_C"}
                 ]};
 
             }else{
-                field = {"_id": null, "label": "New Radio Buttons", "type": "RADIO", "options": [
+                field = {"label": "New Radio Buttons", "type": "RADIO", "options": [
                     {"label": "Option X", "value": "OPTION_X"},
                     {"label": "Option Y", "value": "OPTION_Y"},
                     {"label": "Option Z", "value": "OPTION_Z"}
@@ -117,24 +122,38 @@
                 .then(function(response){
                     if(response){
                         console.log(response);
-                        vm.fields= response;
+                        FieldService.getFieldsForForm(formId)
+                            .then(function(result){
+                                console.log("from field controller")
+                                console.log(result);
+                                vm.fields = result;
+
+                            });
+
                     }
                 })
+
+
+
 
         }
 
         function removeField(field){
             console.log(field);
-            var fieldId = field._id;
+            var fieldId = field._id.toString();
             console.log(fieldId);
             FieldService
                 .deleteFieldFromForm(formId,fieldId)
                 .then(function(response){
                     if(response){
                         console.log(response);
-                        vm.fields=response;
+                        FieldService.getFieldsForForm(formId)
+                            .then(function(fields) {
+                                vm.fields = fields;
+
+                        });
                     }
-                })
+                });
         }
 
 
@@ -146,6 +165,8 @@
                         vm.fields = response;
                     }
                 })
+
+
         }
 
     }

@@ -21,7 +21,7 @@ module.exports = function(app,userModel,formModel){
         user=userModel.createUser(user)
             .then(
                 function(doc){
-                    res.json(user);
+                    res.json(doc);
                 },
                 function (err){
                     res.status(400).send(err);
@@ -33,7 +33,7 @@ module.exports = function(app,userModel,formModel){
         var users = userModel.findAllUsers()
             .then(
                 function(doc){
-                    res.json(users);
+                    res.json(doc);
                 },
                 function(err){
                     res.status(400).send(err);
@@ -117,7 +117,7 @@ module.exports = function(app,userModel,formModel){
             )
             .then(
                 function(users){
-                    res.josn(users);
+                    res.json(users);
                 },
                 function(err){
                     res.status(400).send(err);

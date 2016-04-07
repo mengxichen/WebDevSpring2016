@@ -11,21 +11,43 @@ module.exports = function(app,userModel,formModel){
 
     function findFormsByUserId(req,res){
         var userId = req.params.userId;
-        var forms = formModel.findFormsByUserId(userId);
-        res.status(200).json(forms);
+        var forms = formModel.findFormsByUserId(userId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findFormByFormId(req,res){
         var formId = req.params.formId;
-        var form = formModel.findFormByFormid(formId);
-        res.status(200).json(form);
+        var form = formModel.findFormByFormId(formId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
 
     function deleteFormByFormId(req,res){
         var formId = req.params.formId;
-        var forms = formModel.deleteFormByFormId(formId);
-        res.status(200).json(forms);
+        var forms = formModel.deleteFormByFormId(formId)
+            .then(
+                function(doc){
+                    res.send(doc);
+                },
+
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
 
     }
 
@@ -35,7 +57,7 @@ module.exports = function(app,userModel,formModel){
         var form = formModel.createForm(userId,form)
             .then(
                 function(doc){
-                    res.json(form);
+                    res.json(doc);
                 },
                 function (err){
                     res.status(400).send(err);
@@ -46,8 +68,15 @@ module.exports = function(app,userModel,formModel){
     function updateFormByformId(req,res){
         var formId = req.params.formId;
         var form = req.body;
-        var form = formModel.updateForm(formId,form);
-        res.status(200).json(form);
+        var form = formModel.updateForm(formId,form)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
 }

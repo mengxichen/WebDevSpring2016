@@ -7,8 +7,8 @@
         .controller("FormController", FormController);
 
 
-            function FormController($location,$rootScope,
-                                    FormService,FieldService){
+            function FormController($rootScope,
+                                    FormService){
 
                 var vm = this;
 
@@ -55,15 +55,14 @@
                     FormService
                         .updateFormById(formId, form)
                         .then(function (response){
-                            console.log(response);
                             vm.newForm=null;
-                            console.log(vm.newForm);
                         });
 
 
                     FormService
                         .findAllFormsForUser($rootScope.currentUser._id)
                         .then(function(response){
+                            console.log("from form controller ")
                             console.log(response);
                             vm.forms= response;
                         });
@@ -96,7 +95,8 @@
                         _id: form._id,
                         title: form.title,
                         userId:form.userId,
-                        fields: form.fields
+                        fields: form.fields,
+
                     };
 
 

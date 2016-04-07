@@ -12,7 +12,7 @@
             createFormForUser:createFormForUser,
             findAllFormsForUser:findAllFormsForUser,
             deleteFormById:deleteFormById,
-            updateFormById:updateFormById,
+            updateFormById:updateFormById
 
         };
 

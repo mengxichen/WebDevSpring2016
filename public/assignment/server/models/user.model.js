@@ -33,8 +33,6 @@ module.exports = function(mongoose, db){
         var deferred = q.defer();
         UserModel.create(user,function(err,doc){
 
-            console.log(doc);
-
             if(err){
                 deferred.reject(err);
             }else{

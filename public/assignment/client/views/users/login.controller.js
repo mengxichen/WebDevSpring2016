@@ -30,10 +30,10 @@
                     password: user.password
                 })
                 .then(function (response) {
-                    if (response) {
-                        console.log(response);
+                    if (response[0]) {
+                        console.log(response[0]);
                         $location.url("/profile");
-                        UserService.setCurrentUser(response)
+                        UserService.setCurrentUser(response[0])
 
                     }
 

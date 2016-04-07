@@ -20,9 +20,12 @@
                 UserService
                     .createUser(user)
                     .then(function (response){
-                        console.log(response);
-                        UserService.setCurrentUser(response);
-                        $location.url("/profile");
+                        var currentUser = response;
+                        console.log(currentUser);
+                        if(currentUser != null) {
+                            UserService.setCurrentUser(currentUser);
+                            $location.url("/profile");
+                        }
                     });
 
             }
