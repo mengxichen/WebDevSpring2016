@@ -7,7 +7,7 @@
 
     <div class="tab-pane active" id="field">
         <form role="form">
-            <div class="form-group" id="tbody-sortable" form-sortable form-axis="y">
+            <div class="form-group" id="tbody-sortable" form-sortable jga-sortable-callback="model.sortField(start, end)">
                 <div ng-repeat="field in model.fields">
                     <label class="control-label col-md-10">{{field.label}}</label>
                     <div ng-switch on="field.type">

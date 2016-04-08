@@ -326,8 +326,7 @@ module.exports = function(mongoose, db){
             function(err, doc) {
                 if (!err) {
 
-                    return FieldModel.findOneAndUpdate(
-                        {_id:new ObjectId(fieldId)},updateField);
+                    deferred.resolve(doc)
                 } else {
                     deferred.reject(err);
                 }
@@ -342,7 +341,7 @@ module.exports = function(mongoose, db){
         //'washington:wa\nSeattle:SEATAC'
         var arr = s.split("\n");
         var options = [];
-        for ( i = 0; i < arr.length; i++){
+        for (var i = 0; i < arr.length; i++){
             var pairArr = arr[i].split(":");
             options.push({"label": pairArr[0], "value": pairArr[1]});
         }
@@ -350,15 +349,16 @@ module.exports = function(mongoose, db){
         return options;
     }
 
-    function updateOrder(formId,fields){
-        for (var f in mock) {
-            if(mock[f]._id === formId){
-                mock[f].fields = fields;
-                return mock[f].fields;
-            }
-        }
+    function updateOrder(formId,startIndex, endIndex){
+        return FormModel
+            .findById(formId)
+            .then(
+                function(form) {
+                    form.fields.splice(endIndex, 0, form.fields.splice(startIndex, 1)[0]);
 
-        return null;
+                    form.save();
+                }
+            );
     }
 
 }

@@ -83,10 +83,10 @@
             return deferred.promise;
         }
 
-        function updateOrder(formId,fields){
+        function updateOrder(formId, startIndex,endIndex){
             var deferred = $q.defer();
             $http
-                .put("/api/assignment/form/"+formId + "/field", fields)
+                .put("/api/assignment/form/"+formId.toString()+"/field?startIndex="+startIndex+"&endIndex="+endIndex)
                 .success(function(fields){
                     deferred.resolve(fields);
                 });

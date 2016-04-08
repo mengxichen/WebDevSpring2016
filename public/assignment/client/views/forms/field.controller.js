@@ -22,7 +22,7 @@
         vm.addNewField = addNewField;
         vm.editDialog = editDialog;
         vm.updateField = updateField;
-        vm.updateOrder = updateOrder;
+        vm.sortField = sortField;
 
 
 
@@ -157,14 +157,17 @@
         }
 
 
-        function updateOrder(formId,fields){
+        function sortField(start, end){
             FieldService
-                .updateOrder(formId, fields)
-                .then(function(response){
-                    if(response){
-                        vm.fields = response;
+                .updateOrder(formId, start,end)
+                .then(
+                    function(response){
+                        console.log(response)
+                    },
+                    function(err){
+                        console.log(err);
                     }
-                })
+                );
 
 
         }

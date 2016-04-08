@@ -86,16 +86,20 @@ module.exports = function(app,userModel,formModel) {
 
     function updateOrder(req,res){
         var formId = req.params.formId;
-        var fields = req.body;
-        fields = formModel.updateOrder(formId, fields)
-            .then(
-                function(doc){
-                    res.json(doc);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            );
+        var startIndex = req.query.startIndex;
+        var endIndex = req.query.endIndex;
+        if (startIndex && endIndex) {
+            formModel
+                .updateOrder(formId,startIndex, endIndex)
+                .then(
+                    function (stat) {
+                        return res.json(200);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    }
+                );
+        }
     }
 
 }
