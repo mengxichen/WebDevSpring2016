@@ -42,3 +42,4 @@ console.log(mongoose);
 app.listen(port, ipaddress);
 
 require("./public/assignment/server/app.js")(app,mongoose,db);
+require("./public/Project/server/app.js")(app,mongoose,db);

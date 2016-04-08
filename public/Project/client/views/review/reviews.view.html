@@ -1,0 +1,46 @@
+
+<h1 class="page-header">Appointments</h1>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li><a href="#/profile">Profile</a></li>
+        <li ><a href="#appointments">Appointments</a></li>
+        <li class = "active"><a href="#/Reviews">Reviews</a></li>
+    </ul>
+    <div class="tab-content" >
+        <div id ="reviews" class="tab-pane active">
+            <div class=" table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-6">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            appointmentId</th>
+                        <th class="col-md-6">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            Reviews</th>
+                        <th class="col-md-4">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="review in reviews" ng-class="{'success' : $index == selectedFormIndex}">
+                        <td> {{review.appointmenId}} </td>
+                        <td>
+
+                            <button ng-click="deleteReview(review)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="selectReview(review)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

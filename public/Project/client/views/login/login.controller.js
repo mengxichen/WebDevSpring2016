@@ -13,7 +13,7 @@
 
                 function render(response){
                     console.log(response);
-                    $rootScope.user=response;
+                    $rootScope.currentUser=response;
                     $location.url("/profile");
                 }
 
