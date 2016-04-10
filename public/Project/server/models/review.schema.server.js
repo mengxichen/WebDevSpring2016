@@ -5,8 +5,8 @@ module.exports = function(mongoose){
     var ReviewSchema = mongoose.Schema({
         vendorId: Object,
         userId: Object,
-        time: Time,
-        servicType: String,enum:['Carpet Cleaning', 'Plumber','Roof Repair', 'Home Innovation', 'Arborist/Tree Pruning',' Yard Care'],
+        time: Date,
+        serviceType: String,enum:['Carpet Cleaning', 'Plumber','Roof Repair', 'Home Innovation', 'Arborist/Tree Pruning',' Yard Care'],
         rating: Number
 
     },{collection:'review'});

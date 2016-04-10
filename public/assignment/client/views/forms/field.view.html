@@ -116,7 +116,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.text2)"><span class="glyphicon glyphicon-okay"></span> ok</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.text2,model.fieldType)"><span class="glyphicon glyphicon-okay"></span> ok</button>
 
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.textarea)"><span class="glyphicon glyphicon-okay"></span> ok</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.textarea,model.fieldType)"><span class="glyphicon glyphicon-okay"></span> ok</button>
 
                         </div>
                     </div>
@@ -160,10 +160,10 @@
 
             <div class="col-md-5">
                 <select id="newField">
-                    <option value="TEXT">Single Line Text Field</option>
-                    <option value="TEXTAREA" selected="selected">Multi Line Text Field</option>
+                    <option value="TEXT" selected="selected">Single Line Text Field</option>
+                    <option value="TEXTAREA" >Multi Line Text Field</option>
                     <option value="DATE">Date Field</option>
-                    <option value="DROPDOWN">Dropdown Field</option>
+                    <option value="OPTIONS">Dropdown Field</option>
                     <option value="CHECKBOX">Checkboxes Field</option>
                     <option value="RADIO">Radio Buttons Field</option>
                 </select>

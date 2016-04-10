@@ -302,7 +302,7 @@ module.exports = function(mongoose, db){
                 placeholder: field.placeholder,
                 options:[]
             };
-        } else if (type == "OPTIONS" || type == "CHECKBOXE" || type == "RADIO") {
+        } else if (type == "OPTIONS" || type == "CHECKBOX" || type == "RADIO") {
             updatedField = {
                 label: field.label,
                 type: field.type,
@@ -343,9 +343,10 @@ module.exports = function(mongoose, db){
         var options = [];
         for (var i = 0; i < arr.length; i++){
             var pairArr = arr[i].split(":");
-            options.push({"label": pairArr[0], "value": pairArr[1]});
+            options.push({label: pairArr[0], value: pairArr[1]});
         }
-
+        console.log("print options");
+        console.log(options);
         return options;
     }
 

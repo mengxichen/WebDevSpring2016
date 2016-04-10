@@ -8,8 +8,8 @@ module.exports = function(mongoose, db){
     var FormSchema = require("./form.schema.server.js")(mongoose);
     var FieldSchema = require("./field.schema.server.js")(mongoose);
 
-    var FormModel = mongoose.model("Form",FormSchema);
-    var FieldModel  = mongoose.model("Field", FieldSchema);
+    var FormModel = mongoose.model("Service",FormSchema);
+    var FieldModel  = mongoose.model("ServiceField", FieldSchema);
 
     var api = {
         createForm : createForm,

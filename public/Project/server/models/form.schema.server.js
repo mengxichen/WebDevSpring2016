@@ -10,7 +10,7 @@ module.exports=function(mongoose){
         fields: [{type:mongoose.Schema.Types.Object, ref:'field'}],
         created: {type: Date, default: Date.now},
         update: {type: Date, default: Date.now}
-    },{collection:'form'});
+    },{collection:'service'});
 
     return FormSchema;
 }

@@ -59,7 +59,7 @@
             if (fieldType == "TEXT" || fieldType == "TEXTAREA") {
                 $("#dialog-1").modal();
 
-            } else if (fieldType == "OPTIONS" || fieldType == "CHECKBOXE" || fieldType == "RADIO") {
+            } else if (fieldType == "OPTIONS" || fieldType == "CHECKBOX" || fieldType == "RADIO") {
                 $("#dialog-4").modal();
             }else {
                 $("#dialog-3").modal();
@@ -100,8 +100,8 @@
                     {"label": "Option 3", "value": "OPTION_3"}
                 ]};
 
-            }else if(fieldType == "CHECKBOXE"){
-                field = {"label": "New Checkboxes", "type": "CHECKBOXE", "options": [
+            }else if(fieldType == "CHECKBOX"){
+                field = {"label": "New Checkboxes", "type": "CHECKBOX", "options": [
                     {"label": "Option A", "value": "OPTION_A"},
                     {"label": "Option B", "value": "OPTION_B"},
                     {"label": "Option C", "value": "OPTION_C"}
