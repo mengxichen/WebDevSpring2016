@@ -1,32 +1,35 @@
 /**
  * Created by mengxichen on 2/8/16.
  */
-(function(){
+(function() {
     angular
         .module("HomeServiceApp")
-        .controller("RegistrationController", function ($scope,$rootScope,$location,UserService){
+        .controller("RegistrationController", function ($rootScope, $location, UserService) {
             console.log("here we are from register")
+            var vm = this;
+            vm.register = register;
 
-            $scope.register = register;
-
-            function register(user){
-                console.log("add new users")
-
-                UserService.createUser(user,render);
-                function render(response){
-                    console.log(response);
-                    $rootScope.user=response;
-                    $location.url("/profile");
-                };
-
-                UserService.findAllUsers(callback);
-                function callback(response){
-                    console.log(response);
-                }
+            function init() {
 
             }
-        });
 
+            init();
 
+            function register(user) {
+                console.log("add new users")
 
-} )();
+                UserService
+                    .createUser(user)
+                    .then(function (response) {
+                        var currentUser = response;
+                        console.log(currentUser);
+                        if (currentUser != null) {
+                            UserService.setCurrentUser(currentUser);
+                            $location.url("/profile");
+                        }
+                    });
+
+            }
+
+        })
+})();

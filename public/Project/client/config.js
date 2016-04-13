@@ -8,28 +8,39 @@
             $routeProvider
                 .when("/search",{
                     templateUrl:"views/search/search.view.html",
-                    controller:"SearchController"
+                    controller:"SearchController",
+                    controllerAs: "model"
                 })
 
                 .when("/profile",{
                     templateUrl:"views/users/profile.view.html",
-                    controller:"ProfileController"
+                    controller:"ProfileController",
+                    controllerAs: "model"
                 })
                 .when("/admin", {
                     templateUrl:"views/admin/admin.view.html",
-                    controller:"AdminController"
+                    controller:"AdminController",
+                    controllerAs: "model"
                 })
                 .when("/login",{
                     templateUrl:"views/login/login.view.html",
-                    controller:"LoginController"
+                    controller:"LoginController",
+                    controllerAs: "model"
                 })
                 .when("/register",{
                     templateUrl:"views/users/register.view.html",
-                    controller:"RegistrationController"
+                    controller:"RegistrationController",
+                    controllerAs: "model"
+                })
+                .when("/reviews",{
+                    templateUrl:"views/review/reviews.view.html",
+                    controller:"ReviewController",
+                    controllerAs:"model"
                 })
                 .when("/appointments",{
                     templateUrl:"views/appointments/appointments.view.html",
-                    controller:"AppointmentController"
+                    controller:"AppointmentController",
+                    controllerAs: "model"
                 })
                 .otherwise({
                     redirectTo: "/search"

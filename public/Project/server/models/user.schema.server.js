@@ -8,11 +8,10 @@ module.exports = function(mongoose){
         password: String,
         firstName: String,
         lastName: String,
+        phone:String,
         email: [String],
         zipCode:String,
-        address:String,
-
-        phones: [String]
+        address:String
 
     },{collection: 'customer'});
 

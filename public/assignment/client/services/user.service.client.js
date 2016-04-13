@@ -11,10 +11,11 @@
             findUserByUsername:findUserByUsername,
             findUserByCredentials:findUserByCredentials ,
             findAllUsers:findAllUsers,
-            createUser:createUser,
+            register:register,
             deleteUserById:deleteUserById,
             updateUser:updateUser,
-            setCurrentUser:setCurrentUser
+            setCurrentUser:setCurrentUser,
+            createUser:createUser
         };
 
         return api;
@@ -58,12 +59,24 @@
             return deferred.promise;
         }
 
-        function createUser(user){
+        function register(user){
 
             var deferred = $q.defer();
 
             $http
-                .post("/api/assignment/user", user)
+                .post("/api/assignment/register", user)
+                .success(function(user){
+                    deferred.resolve(user);
+                });
+
+            return deferred.promise;
+        }
+
+        function createUser(user){
+            var deferred = $q.defer();
+
+            $http
+                .post("/api/assignment/admin/user", user)
                 .success(function(user){
                     deferred.resolve(user);
                 });

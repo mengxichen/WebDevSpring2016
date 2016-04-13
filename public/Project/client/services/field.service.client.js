@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("HomeServiceApp")
         .factory("FieldService",fieldService);
 
     function fieldService($http,$q){
@@ -25,7 +25,7 @@
             var deferred = $q.defer();
 
             $http
-                .post("/api/assignment/form/"+ formId + "/field", field)
+                .post("/api/project/form/"+ formId + "/field", field)
                 .success(function(field){
                     deferred.resolve(field);
                 });
@@ -37,7 +37,7 @@
             var deferred = $q.defer();
 
             $http
-                .get("/api/assignment/form/"+formId + "/field")
+                .get("/api/project/form/"+formId + "/field")
                 .success(function(fields){
                     deferred.resolve(fields);
                 });
@@ -49,7 +49,7 @@
             var deferred = $q.defer();
 
             $http
-                .get("/api/assignment/form/"+ formId+"/field/"+ fieldId)
+                .get("/api/project/form/"+ formId+"/field/"+ fieldId)
                 .success(function(field){
                     deferred.resolve(field);
                 });
@@ -61,7 +61,7 @@
             var deferred = $q.defer();
 
             $http
-                .delete("/api/assignment/form/"+ formId+"/field/"+ fieldId)
+                .delete("/api/project/form/"+ formId+"/field/"+ fieldId)
                 .success(function(fields){
                     deferred.resolve(fields);
                 });
@@ -75,7 +75,7 @@
             console.log("from client service field");
             console.log(field);
             $http
-                .put("/api/assignment/form/"+formId.toString() + "/field/"+ fieldId,field)
+                .put("/api/project/form/"+formId.toString() + "/field/"+ fieldId,field)
                 .success(function(fields){
                     deferred.resolve(fields);
                 });
@@ -86,7 +86,7 @@
         function updateOrder(formId, startIndex,endIndex){
             var deferred = $q.defer();
             $http
-                .put("/api/assignment/form/"+formId.toString()+"/field?startIndex="+startIndex+"&endIndex="+endIndex)
+                .put("/api/project/form/"+formId.toString()+"/field?startIndex="+startIndex+"&endIndex="+endIndex)
                 .success(function(fields){
                     deferred.resolve(fields);
                 });

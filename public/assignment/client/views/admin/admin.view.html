@@ -26,7 +26,7 @@
                 <td ><input class="form-control"  type="text" placeholder="role1,role2" ng-model="model.newUser.roles"></td>
                 <td >
                     <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.addByAdmin(model.newUser)"></span>
                     </button>
                     <button type="button" class="btn btn-default" aria-label="glyphicon-ok" >
                         <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="model.updateByAdmin(model.newUser)"></span>
@@ -35,10 +35,10 @@
             </tr>
             <tr ng-repeat = "user in model.users">
                 <td>{{user.username}}</td>
-                <td>{{user.password}}</td>
+                <td></td>
                 <td>{{user.roles}}</td>
                 <td>
-                    <button type="button" class="btn btn-default" aria-label="glyphicon-remove" ng-click="model.remove(user)">
+                    <button type="button" class="btn btn-default" aria-label="glyphicon-remove" ng-click="model.removeByAdmin(user)">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <button type="button" class="btn btn-default" aria-label="glyphicon-pencil"  ng-click="model.select(user)">

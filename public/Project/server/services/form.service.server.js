@@ -2,11 +2,11 @@
  * Created by mengxichen on 3/10/16.
  */
 module.exports = function(app,userModel,formModel){
-    app.get("/api/assignment/user/:userId/form", findFormsByUserId);
-    app.get("/api/assignment/form/:formId", findFormByFormId);
-    app.delete("/api/assignment/form/:formId", deleteFormByFormId);
-    app.post("/api/assignment/user/:userId/form", createForm);
-    app.put("/api/assignment/form/:formId", updateFormByformId);
+    app.get("/api/project/user/:userId/form", findFormsByUserId);
+    app.get("/api/project/form/:formId", findFormByFormId);
+    app.delete("/api/project/form/:formId", deleteFormByFormId);
+    app.post("/api/project/user/:userId/form", createForm);
+    app.put("/api/project/form/:formId", updateFormByformId);
 
 
     function findFormsByUserId(req,res){

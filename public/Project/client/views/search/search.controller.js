@@ -6,12 +6,22 @@
     angular
         .module("HomeServiceApp")
         .controller("SearchController",SearchController);
-    function SearchController($scope, $location, $routeParams, VendorService) {
-        $scope.search = search;
-        $scope.select = select;
+    function SearchController( $location, $routeParams, VendorService) {
 
-        if($scope.service) {
-            search($scope.service);
+        var vm = this;
+        console.log("here we are from search page");
+        function init() {
+
+        }
+
+        init();
+
+
+        vm.search = search;
+        vm.select = select;
+
+        if(vm.service) {
+            search(vm.service);
         }
 
         function search(service) {
@@ -19,22 +29,6 @@
             bar.style = "width: 50%";
             bar.innerHTML = "make an appointment!";
             var tbody = $("#container");
-
-            var businesses = [
-                {
-                    "name": "plumbing LLC",
-                    "location": "Seattle, WA",
-                    "rating": 3.5,
-                    "categories": ["water heater", "kitchen sewer"]
-                },
-                {
-                    "name": "Carpet Cleaning LLC",
-                    "location": "Seattle, WA",
-                    "rating": 3.9,
-                    "categories": ["carpet cleaning", "dry cleaning"]
-                }
-
-            ]
 
 
             //$scope.services = businesses;
@@ -63,8 +57,8 @@
                     signatureMethod : "HMAC-SHA1"
                 }
             };
-            var terms = 'food';
-            var near = 'San+Francisco';
+            var terms = service.type;
+            var near = service.location;
             var accessor = {
                 consumerSecret : auth.consumerSecret,
                 tokenSecret : auth.accessTokenSecret
@@ -115,7 +109,7 @@
                         var phoneTd = $("<td>" + phone + "</td>");
                         var ratingTd = $("<td>" + rating + "</td>");
 
-                        var selectBtn  = $('<td><button type="button" ng-click = "select(business)"class="btn btn-default">Select</button></td>')
+                        var selectBtn  = $('<td><button type="button" ng-click = "model.select(model.business)"class="btn btn-default">Select</button></td>')
 
                         tr.append(nameTd);
                         tr.append(locationTd);

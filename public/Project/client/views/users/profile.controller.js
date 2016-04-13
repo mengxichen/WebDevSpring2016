@@ -6,14 +6,19 @@
         .module("HomeServiceApp")
         .controller("ProfileController", function ($scope,$rootScope,UserService){
             console.log("here we are from profile");
-            $scope.user1 = {
-                username: $rootScope.user.username,
-                password: $rootScope.user.password,
-                firstName: $rootScope.user.firstName,
-                lastName: $rootScope.user.lastName,
-                email: $rootScope.user.email
+            var vm = this;
+            vm.user1 = {
+                username: $rootScope.currentUser.username,
+                password: $rootScope.currentUser.password,
+                firstName: $rootScope.currentUser.firstName,
+                lastName: $rootScope.currentUser.lastName,
+                email: $rootScope.currentUser.email,
+                phone:$rootScope.currentUser.phone,
+                zipCode:$rootScope.currentUser.zipCode,
+                address:$rootScope.currentUser.address
+
             };
-            $scope.update = update;
+            vm.update = update;
 
             function update(updateUser){
                 var userId= $rootScope.user._id;

@@ -1,6 +1,7 @@
 /**
  * Created by mengxichen on 2/8/16.
  */
+"use strict";
 (function(){
     angular
         .module("FormBuilderApp")
@@ -8,19 +9,16 @@
             function AdminController(UserService){
                 var vm = this;
                 console.log("here we are from admin");
-                vm.remove = remove;
+                vm.removeByAdmin = removeByAdmin;
                 vm.select = select;
                 vm.updateByAdmin = updateByAdmin;
-
+                vm.addByAdmin = addByAdmin;
 
                 function init(){
 
                     UserService
                         .findAllUsers()
-                        .then(function(response){
-                            console.log(response);
-                            vm.users= response;
-                        });
+                        .then(handleSuccess, handleError);
 
 
                 }
@@ -28,25 +26,22 @@
 
                 function updateByAdmin(user){
                     var userId = user._id;
-                    UserService.updateUser(userId,user);
-                    UserService
-                        .findAllUsers()
-                        .then(function(response){
-                            console.log(response);
-                            vm.users= response;
-                        });
-                    vm.newUser = null;
+                    UserService.updateUser(userId,user)
+                        .then(handleSuccess, handleError);
                 }
 
-                function remove(user){
+                function addByAdmin(user){
+                    UserService
+                        .createUser(user)
+                        .then(handleSuccess, handleError);
+                }
+
+                function removeByAdmin(user){
                     var userId = user._id;
                     console.log(userId);
                     UserService
                         .deleteUserById(userId)
-                        .then(function(response){
-                            console.log(response);
-                            vm.users = response;
-                        });
+                        .then(handleSuccess, handleError);
                 }
 
 
@@ -62,7 +57,17 @@
                     };
                 }
 
+                function handleSuccess(response) {
+                    $scope.users = response.data;
+                }
+
+                function handleError(error) {
+                    $scope.error = error;
+                }
+
+
             }
+
 
 
 } )();

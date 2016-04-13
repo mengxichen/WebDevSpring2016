@@ -26,10 +26,6 @@ module.exports = function(mongoose, db){
 
     //accept an instance object, return collection
     function createUser(user){
-       /* user._id = "ID_" + (new Date()).getTime();
-        mock.push(user);
-        return user;*/
-
         var deferred = q.defer();
         UserModel.create(user,function(err,doc){
 
@@ -45,7 +41,6 @@ module.exports = function(mongoose, db){
 
     //return collection
     function findAllUsers(){
-        //return mock;
         var deferred = q.defer();
         UserModel.find(function(err,doc){
             console.log(doc);
@@ -61,13 +56,6 @@ module.exports = function(mongoose, db){
 
     //return a user
     function findUserById(userId){
-       /* for(var u in mock) {
-            if( mock[u]._id === userId ) {
-                return mock[u];
-            }
-        }
-        return null;
-*/
         var deferred = q.defer();
         UserModel.findById(userId,function(err,doc){
             if(err){
@@ -79,26 +67,11 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-
-
     }
 
 
     //update the instance
     function updateUser(userId,user){
-       /* for(var u in mock){
-            if(mock[u]._id == userId) {
-                mock[u].firstName = user.firstName;
-                mock[u].lastName = user.lastName;
-                mock[u].username = user.username;
-                mock[u].password = user.password;
-                mock[u].email = user.email;
-                mock[u].roles = user.roles;
-                return mock[u];
-
-            }
-        }
-        return null;*/
         var deferred = q.defer();
         UserModel.findById(userId,function(err,doc){
             doc.firstName = user.firstName;
@@ -120,14 +93,6 @@ module.exports = function(mongoose, db){
     }
 
     function deleteUser(userId){
-        /*for(var u in mock){
-            if(mock[u]._id == userId){
-                mock.splice(u,1);
-
-            }
-        }
-
-        return mock;*/
         var deferred = q.defer();
         UserModel.remove({_id:userId},
         function(err,result){
@@ -145,14 +110,7 @@ module.exports = function(mongoose, db){
 
 
     function findUserByUsername(username){
-        /*for(var u in mock){
-            if(mock[u].username === username){
-                return mock[u];
-            }
-        }
-        return null;*/
         var deferred = q.defer();
-
         UserModel.find({username:username},
             function(err,doc){
                 if(err){
@@ -166,17 +124,7 @@ module.exports = function(mongoose, db){
     }
 
     function findUserByCredentials(username,password){
-       /*for(var u in mock){
-            if(mock[u].username === username &&
-                mock[u].password === password){
-                return mock[u];
-            }
-
-        }
-        return null;*/
-
         var deferred = q.defer();
-
         UserModel.findOne(
             {username: username,
                 password: password},
@@ -191,8 +139,5 @@ module.exports = function(mongoose, db){
 
         return deferred.promise;
     }
-
-
-
 
 }

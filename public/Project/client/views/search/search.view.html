@@ -7,26 +7,26 @@
     </div>
 
 
-    <img src="images/pruning.jpg"class="img-circle"  width="100" height="100">
-    <img src="images/Carpet-Cleaning.png" class="img-circle"  width="100" height="100">
-    <img src="images/icon_02-300x300.png"  class="img-circle" width="100" height="100">
-    <img src="images/mQSiiZK.jpg" class="img-circle"  width="100" height="100">
-    <img src="images/plumbing-icon.png" class="img-circle"  width="100" height="100">
+    <img src="../images/pruning.jpg"class="img-circle"  width="100" height="100">
+    <img src="../images/Carpet-Cleaning.png" class="img-circle"  width="100" height="100">
+    <img src="../images/icon_02-300x300.png"  class="img-circle" width="100" height="100">
+    <img src="../images/mQSiiZK.jpg" class="img-circle"  width="100" height="100">
+    <img src="../images/plumbing-icon.png" class="img-circle"  width="100" height="100">
 
     <p class="lead">Choose one of the home services that you need!</p>
 
     <div>
 
-        <select name ="singleType" ng-model="service.type">
+        <select name ="singleType" ng-model="model.service.type">
             <option value="roof"></option>
             <option value="Carpet"></option>
             <option value="Plumbing"></option>
             <option value="Gardening"></option>
         </select>
         </br></br>
-        <input ng-model="service.location" class="form-control" placeholder="city,State or zipcode">
+        <input ng-model="model.service.location" class="form-control" placeholder="city,State or zipcode">
         </br>
-        <button type="button" ng-click = "search(service)"class="btn btn-default">Explore!</button>
+        <button type="button" ng-click = "model.search(model.service)"class="btn btn-default">Explore!</button>
     </div>
 
 
@@ -43,7 +43,7 @@
             </tr>
             </thead>
             <tbody id="container">
-            <tr id = "template" ng-repeat="business in services">
+            <tr id = "template" ng-repeat="business in model.services">
                 <td><a href="#" class="link">{{business.name}}</a></td>
                 <td>
                     {{business.location}}
@@ -51,7 +51,7 @@
                 <td>{{business.phone}}</td>
                 <td>{{business.rating}}</td>
 
-                <td><button type="button" ng-click = "select(business)"class="btn btn-default">Select</button></td>
+                <td><button type="button" ng-click = "model.select(business)"class="btn btn-default">Select</button></td>
             </tr>
             </tbody>
         </table>

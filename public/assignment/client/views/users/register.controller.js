@@ -18,15 +18,21 @@
                 console.log("add new users")
 
                 UserService
-                    .createUser(user)
-                    .then(function (response){
-                        var currentUser = response;
-                        console.log(currentUser);
-                        if(currentUser != null) {
-                            UserService.setCurrentUser(currentUser);
-                            $location.url("/profile");
+                    .register(user)
+                    .then(
+                        function (response) {
+                            var currentUser = response;
+                            console.log(currentUser);
+                            if (currentUser != null) {
+                                UserService.setCurrentUser(currentUser);
+                                $location.url("/profile");
+                            }
+
+                        },
+                        function(err) {
+                            $scope.error = err;
                         }
-                    });
+                    );
 
             }
         });

@@ -16,6 +16,11 @@ var connection_string = 'mongodb://127.0.0.1:27017/cs5610';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+app.use(session({
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
 //app.use(session({ secret: process.env.PASSPORT_SECRET }));
 app.use(cookieParser())
 app.use(passport.initialize());

@@ -1,16 +1,14 @@
  /**
  * Created by mengxichen on 3/10/16.
  */
-module.exports = function(app,userModel,formModel){
-    //    app.get("/api/assignment/user?username=username",findUserByUsername);
-    app.get("/api/assignment/user",findUserByUsername);
-    //app.get("/api/assignment/user?username=username&password=password",findUserByCredentials);
-    app.get("/api/assignment/user",findUserByCredentials);
-    app.post("/api/assignment/user", createUser);
-    app.get("/api/assignment/userAll", findAllUsers);
-    app.get("/api/assignment/user/:id", findUserById);
-    app.put("/api/assignment/user/:id", updateUserById);
-    app.delete("/api/assignment/user/:id", deleteUserById);
+module.exports = function(app,userModel){
+    app.get("/api/project/user",findUserByUsername);
+    app.get("/api/project/user",findUserByCredentials);
+    app.post("/api/project/user", createUser);
+    app.get("/api/project/userAll", findAllUsers);
+    app.get("/api/project/user/:id", findUserById);
+    app.put("/api/project/user/:id", updateUserById);
+    app.delete("/api/project/user/:id", deleteUserById);
 
 
     function createUser(req,res){
@@ -125,4 +123,4 @@ module.exports = function(app,userModel,formModel){
             )
 
     }
-}
+};

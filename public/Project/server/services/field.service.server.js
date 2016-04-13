@@ -2,12 +2,12 @@
  * Created by mengxichen on 3/10/16.
  */
 module.exports = function(app,userModel,formModel) {
-    app.get("/api/assignment/form/:formId/field", findFieldsByFormId);
-    app.get("/api/assignment/form/:formId/field/:fieldId", findFieldByFieldIdFormId);
-    app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFieldByFormIdFieldId);
-    app.post("/api/assignment/form/:formId/field", createFieldByFormId);
-    app.put("/api/assignment/form/:formId/field/:fieldId", updateFieldByFormIdFieldId);
-    app.put("/api/assignment/form/:formId/field", updateOrder);
+    app.get("/api/project/form/:formId/field", findFieldsByFormId);
+    app.get("/api/project/form/:formId/field/:fieldId", findFieldByFieldIdFormId);
+    app.delete("/api/project/form/:formId/field/:fieldId", deleteFieldByFormIdFieldId);
+    app.post("/api/project/form/:formId/field", createFieldByFormId);
+    app.put("/api/project/form/:formId/field/:fieldId", updateFieldByFormIdFieldId);
+    app.put("/api/project/form/:formId/field", updateOrder);
 
 
 

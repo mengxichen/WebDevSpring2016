@@ -9,7 +9,7 @@
             function SidebarController(){
                 var vm =this;
 
-                console.log("hi from sidebar")
+                console.log("hi from sidebar");
 
                 function init(){
 
