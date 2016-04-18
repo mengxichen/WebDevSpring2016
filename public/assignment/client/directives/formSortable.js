@@ -1,6 +1,4 @@
-/**
- * Created by mengxichen on 3/16/16.
- */
+
 (function(){
     angular
         .module("formSortable", [])
