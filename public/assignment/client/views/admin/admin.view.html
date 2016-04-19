@@ -5,33 +5,28 @@
         <thead>
             <tr>
                 <th class="col-md-3">
-                <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-                Username</th>
-                <th class="col-md-2">
-                  <span class="glyphicon glyphicon-triangle-bottom"></span>
+                <span class="glyphicon glyphicon-triangle-bottom" ng-click="model.sortAscending('username','descending')"></span>
+                    <span class="glyphicon glyphicon-triangle-top" ng-click="model.sortAscending('username','ascending')"></span>
 
+                    Username</th>
+                <th class="col-md-2">
                 Password</th>
                 <th class="col-md-2">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-click="model.sortAscending('firstName','descending')"></span>
+                    <span class="glyphicon glyphicon-triangle-top" ng-click="model.sortAscending('firstName','ascending')"></span>
 
                     FirstName</th>
                 <th class="col-md-2">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-click="model.sortAscending('lastName','descending')"></span>
+                    <span class="glyphicon glyphicon-triangle-top" ng-click="model.sortAscending('lastName','ascending')"></span>
 
                     LastName</th>
                 <th class="col-md-2">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-
                     Phones</th>
                 <th class="col-md-2">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-
                     Email</th>
-                <th class="col-md-3">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-                Role</th>
+                <th class="col-md-3">Roles</th>
                 <th class="col-md-2">
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
                 Action</th>
             </tr>
         </thead>

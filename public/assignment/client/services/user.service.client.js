@@ -18,12 +18,23 @@
             createUser:createUser,
             login:login,
             logout:logout,
-            updateUserByAdmin:updateUserByAdmin
+            updateUserByAdmin:updateUserByAdmin,
+            sortAscending:sortAscending
 
 
         };
 
         return api;
+
+        function sortAscending(category,dir){
+            var deferred = $q.defer();
+            $http
+                .get("/api/assignment/admin/sort?category=" + category + "&dir=" + dir)
+                .success(function(users){
+                    deferred.resolve(users);
+                });
+            return deferred.promise;
+        }
 
         function updateUserByAdmin(userId,user){
             var deferred = $q.defer();

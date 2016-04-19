@@ -24,6 +24,7 @@ module.exports = function(app,userModel,formModel){
     app.get("/api/assignment/admin/user/:userId", auth,findUserByIdByAdmin);
     app.delete("/api/assignment/admin/user/:userId", auth,deleteUserByIdByAdmin);
     app.put("/appi/assignment/admin/user/:userId",auth,updateUserByAdmin);
+    app.get("/api/assignment/admin/sort",auth,sortCategory);
 
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
@@ -347,5 +348,21 @@ module.exports = function(app,userModel,formModel){
         }
 
 
+    }
+
+    function sortCategory(req,res){
+        if(isAdmin(req.user)){
+            var category = req.query.category;
+            var dir = req.query.dir;
+            userModel.sortCategory(category, dir)
+                .then(
+                    function(users){
+                        res.json(users);
+                    },
+                    function(err){
+                        res.status(400).send(err);
+                    }
+                )
+        }
     }
 }

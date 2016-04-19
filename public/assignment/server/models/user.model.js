@@ -16,12 +16,58 @@ module.exports = function(mongoose, db){
         updateUser : updateUser,
         deleteUser : deleteUser,
         findUserByUsername : findUserByUsername,
-        findUserByCredentials : findUserByCredentials
+        findUserByCredentials : findUserByCredentials,
+        sortCategory:sortCategory
 
 
     };
 
     return api;
+
+    function sortCategory(category, dir){
+        var deferred = q.defer();
+
+        console.log(category);
+        console.log(dir);
+       if(dir == 'descending'){
+           dir = -1;
+       }else{
+           dir = 1;
+       }
+        console.log(dir);
+        if(category == "username"){
+            UserModel.find({}, null, {sort: {username: dir}}, function (err, users) {
+                if(err){
+                    deferred.reject(err);
+                }else{
+                    deferred.resolve(users);
+                }
+            });
+        }
+
+        if(category == "lastName"){
+            UserModel.find({}, null, {sort: {lastName: dir}}, function (err, users) {
+                if(err){
+                    deferred.reject(err);
+                }else{
+                    deferred.resolve(users);
+                }
+            });
+        }
+        if(category == "firstName"){
+            UserModel.find({}, null, {sort: {firstName: dir}}, function (err, users) {
+                if(err){
+                    deferred.reject(err);
+                }else{
+                    deferred.resolve(users);
+                }
+            });
+        }
+
+        return deferred.promise;
+
+
+    }
 
 
     //accept an instance object, return collection

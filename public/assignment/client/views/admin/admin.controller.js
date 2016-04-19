@@ -13,6 +13,7 @@
                 vm.select = select;
                 vm.updateByAdmin = updateByAdmin;
                 vm.addByAdmin = addByAdmin;
+                vm.sortAscending = sortAscending
 
                 function init(){
 
@@ -21,8 +22,14 @@
                         .then(handleSuccess, handleError);
 
 
+
                 }
                 init();
+
+                function sortAscending(category,up){
+                    UserService.sortAscending(category,up)
+                        .then(handleSuccess,handleError);
+                    }
 
                 function updateByAdmin(user){
                     var userId = user._id;
