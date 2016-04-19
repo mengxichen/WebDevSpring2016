@@ -4,8 +4,6 @@
 
  var passport         = require('passport');
  var LocalStrategy    = require('passport-local').Strategy;
- var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
- var FacebookStrategy = require('passport-facebook').Strategy;
 
 
 module.exports = function(app,userModel,formModel){

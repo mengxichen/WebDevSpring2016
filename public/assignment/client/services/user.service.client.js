@@ -15,11 +15,22 @@
             deleteUserById:deleteUserById,
             updateUser:updateUser,
             setCurrentUser:setCurrentUser,
-            createUser:createUser
+            createUser:createUser,
+            login:login,
+            logout:logout
+
+
         };
 
         return api;
 
+        function logout() {
+            return $http.post("/api/assignment/logout");
+        }
+
+        function login(user){
+            return $http.post("/api/assignment/login", user);
+        }
 
         function findUserByUsername(username){
             var deferred = $q.defer();
@@ -51,7 +62,7 @@
             var deferred = $q.defer();
 
             $http
-                .get("/api/assignment/userAll")
+                .get("/api/assignment/admin/user")
                 .success(function(users){
                     deferred.resolve(users);
                 });

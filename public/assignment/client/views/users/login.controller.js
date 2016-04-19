@@ -25,15 +25,15 @@
             }
 
             UserService
-                .findUserByCredentials({
+                .login({
                     username: user.username,
                     password: user.password
                 })
                 .then(function (response) {
-                    if (response[0]) {
-                        console.log(response[0]);
+                    if (response) {
+                        console.log(response);
                         $location.url("/profile");
-                        UserService.setCurrentUser(response[0])
+                        UserService.setCurrentUser(response)
 
                     }
 

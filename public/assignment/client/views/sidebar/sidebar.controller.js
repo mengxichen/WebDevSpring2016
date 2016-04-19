@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("HomeServiceApp")
+        .module("FormBuilderApp")
         .controller("SidebarController", SidebarController);
 
             function SidebarController(){

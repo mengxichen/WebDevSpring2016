@@ -58,11 +58,11 @@
                 }
 
                 function handleSuccess(response) {
-                    $scope.users = response.data;
+                    vm.users = response;
                 }
 
                 function handleError(error) {
-                    $scope.error = error;
+                    vm.error = error;
                 }
 
 

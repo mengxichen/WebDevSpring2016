@@ -174,18 +174,6 @@ module.exports = function(mongoose, db){
 
     function findFieldByFieldIdFormId(formId, fieldId){
 
-        /*for(var f in mock){
-            if(mock[f]._id === formId){
-                var fields = mock[f].fields;
-                for(var i = 0; i < fields.length; i++){
-                    if(fields[i]._id === fieldId){
-                        return fields[i];
-                    }
-                }
-            }
-        }
-        return null;*/
-
         var deferred = q.defer();
         FormModel.findOne({_id:formId},
             function(err,doc){

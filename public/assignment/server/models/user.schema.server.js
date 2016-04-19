@@ -9,6 +9,7 @@ module.exports = function(mongoose){
         firstName: String,
         lastName: String,
         email: [String],
+        roles:[String],
         phones: [String]
     },{collection: 'user'});
 

@@ -28,9 +28,6 @@
                                 $location.url("/profile");
                             }
 
-                        },
-                        function(err) {
-                            $scope.error = err;
                         }
                     );
 
