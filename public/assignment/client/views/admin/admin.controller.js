@@ -26,7 +26,7 @@
 
                 function updateByAdmin(user){
                     var userId = user._id;
-                    UserService.updateUser(userId,user)
+                    UserService.updateUserByAdmin(userId,user)
                         .then(handleSuccess, handleError);
                 }
 
@@ -34,6 +34,7 @@
                     UserService
                         .createUser(user)
                         .then(handleSuccess, handleError);
+
                 }
 
                 function removeByAdmin(user){
@@ -46,19 +47,12 @@
 
 
                 function select(user){
-                    vm.newUser= {
-                        "_id": user._id,
-                        "firstName": user.firstName,
-                        "lastName": user.lastName,
-                        "username": user.username,
-                        "password": user.password,
-                        "email":user.email,
-                        "roles":user.roles
-                    };
+                    vm.newUser = angular.copy(user);
                 }
 
                 function handleSuccess(response) {
                     vm.users = response;
+                    vm.newUser = null;
                 }
 
                 function handleError(error) {

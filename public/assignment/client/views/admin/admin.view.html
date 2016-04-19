@@ -11,6 +11,22 @@
                   <span class="glyphicon glyphicon-triangle-bottom"></span>
 
                 Password</th>
+                <th class="col-md-2">
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+
+                    FirstName</th>
+                <th class="col-md-2">
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+
+                    LastName</th>
+                <th class="col-md-2">
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+
+                    Phones</th>
+                <th class="col-md-2">
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+
+                    Email</th>
                 <th class="col-md-3">
                     <span class="glyphicon glyphicon-triangle-bottom"></span>
                 Role</th>
@@ -23,6 +39,10 @@
             <tr>
                 <td ><input class="form-control"  type="text" placeholder="username" ng-model="model.newUser.username"></td>
                 <td ><input class="form-control"  type="text" placeholder="password" ng-model="model.newUser.password"></td>
+                <td ><input class="form-control"  type="text" placeholder="lastName" ng-model="model.newUser.firstName"></td>
+                <td ><input class="form-control"  type="text" placeholder="lastName" ng-model="model.newUser.lastName"></td>
+                <td ><input class="form-control"  type="text" placeholder="phone" ng-model="model.newUser.phones"></td>
+                <td ><input class="form-control"  type="text" placeholder="email" ng-model="model.newUser.email"></td>
                 <td ><input class="form-control"  type="text" placeholder="role1,role2" ng-model="model.newUser.roles"></td>
                 <td >
                     <button type="button" class="btn btn-default" aria-label="glyphicon-remove">
@@ -36,7 +56,13 @@
             <tr ng-repeat = "user in model.users">
                 <td>{{user.username}}</td>
                 <td></td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.phones}}</td>
+                <td>{{user.email}}</td>
                 <td>{{user.roles}}</td>
+
+
                 <td>
                     <button type="button" class="btn btn-default" aria-label="glyphicon-remove" ng-click="model.removeByAdmin(user)">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

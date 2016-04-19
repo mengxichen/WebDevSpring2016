@@ -17,12 +17,25 @@
             setCurrentUser:setCurrentUser,
             createUser:createUser,
             login:login,
-            logout:logout
+            logout:logout,
+            updateUserByAdmin:updateUserByAdmin
 
 
         };
 
         return api;
+
+        function updateUserByAdmin(userId,user){
+            var deferred = $q.defer();
+
+            $http
+                .put("/appi/assignment/admin/user/" + userId,user)
+                .success(function(user){
+                    deferred.resolve(user);
+                });
+
+            return deferred.promise;
+        }
 
         function logout() {
             return $http.post("/api/assignment/logout");
@@ -88,8 +101,8 @@
 
             $http
                 .post("/api/assignment/admin/user", user)
-                .success(function(user){
-                    deferred.resolve(user);
+                .success(function(doc){
+                    deferred.resolve(doc);
                 });
 
             return deferred.promise;
@@ -100,7 +113,7 @@
             var deferred = $q.defer();
 
             $http
-                .delete("/api/assignment/user/" + userId)
+                .delete("/api/assignment/admin/user/" + userId)
                 .success(function(users){
                     deferred.resolve(users);
                 });

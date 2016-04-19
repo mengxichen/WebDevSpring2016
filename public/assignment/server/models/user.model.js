@@ -27,7 +27,15 @@ module.exports = function(mongoose, db){
     //accept an instance object, return collection
     function createUser(user){
         var deferred = q.defer();
-        UserModel.create(user,function(err,doc){
+        UserModel.create({
+            email: user.email,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            password:user.password,
+            phones:user.phones,
+            roles:user.roles,
+            username:user.username
+        },function(err,doc){
 
             if(err){
                 deferred.reject(err);
@@ -73,27 +81,31 @@ module.exports = function(mongoose, db){
     //update the instance
     function updateUser(userId,user){
         var deferred = q.defer();
-        UserModel.findById(userId,function(err,doc){
-            doc.firstName = user.firstName;
-            doc.lastName = user.lastName;
-            doc.username = user.username;
-            doc.password = user.password;
-            doc.email = user.email;
-            doc.roles = user.roles;
-            doc.save(function(err,doc){
-                if(err){
-                    deferred.reject(err);
-                }else{
-                    deferred.resolve(doc);
-                }
+        UserModel.update({_id: user._id},
+            {$set: {username:user.username,
+                    firstName:user.firstName,
+                    lastName:user.lastName,
+                    roles:user.roles,
+                    email:user.email,
+                    phones:user.phones
 
-            })
+            }},
+        function(err,result) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                console.log("from model");
+                console.log(result);
+                deferred.resolve(result);
+            }
         });
+
         return deferred.promise;
     }
 
     function deleteUser(userId){
         var deferred = q.defer();
+        userId = mongoose.Types.ObjectId(userId);
         UserModel.remove({_id:userId},
         function(err,result){
             if(err){
@@ -111,7 +123,7 @@ module.exports = function(mongoose, db){
 
     function findUserByUsername(username){
         var deferred = q.defer();
-        UserModel.find({username:username},
+        UserModel.findOne({username:username},
             function(err,doc){
                 if(err){
                     deferred.reject(err);

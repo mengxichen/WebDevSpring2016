@@ -133,12 +133,25 @@ module.exports = function(app,userModel,formModel){
     }
 
     function createUserByAdmin(req,res){
-
+        var newUser = req.body;
         if(newUser.roles && newUser.roles.length > 1) {
             newUser.roles = newUser.roles.split(",");
         } else {
             newUser.roles = ["student"];
         }
+
+        if(newUser.email && newUser.email.length > 1) {
+            newUser.email = newUser.email.split(",");
+        } else {
+            newUser.email = [];
+        }
+        if(newUser.phones && newUser.phones.length > 1) {
+            newUser.phones = newUser.phones.split(",");
+        } else {
+            newUser.phones = [];
+        }
+
+
 
         // first check if a user already exists with the username
         userModel
@@ -148,10 +161,11 @@ module.exports = function(app,userModel,formModel){
                     // if the user does not already exist
                     if(user == null) {
                         // create a new user
+                        console.log("from server, duplicate username");
                         return userModel.createUser(newUser)
                             .then(
                                 // fetch all the users
-                                function(){
+                                function(doc){
                                     return userModel.findAllUsers();
                                 },
                                 function(err){
@@ -171,7 +185,7 @@ module.exports = function(app,userModel,formModel){
                 function(users){
                     res.json(users);
                 },
-                function(){
+                function(err){
                     res.status(400).send(err);
                 }
             )
@@ -260,26 +274,43 @@ module.exports = function(app,userModel,formModel){
 
     function updateUserByAdmin(req,res){
         var userId = req.params.id;
-        var user = req.body;
-
         var newUser = req.body;
+
         if(!isAdmin(req.user)) {
             delete newUser.roles;
         }
         if(typeof newUser.roles == "string") {
             newUser.roles = newUser.roles.split(",");
         }
+        if(typeof newUser.phones == "string") {
+            newUser.phones = newUser.phones.split(",");
+        }
+        if(typeof newUser.email == "string") {
+            newUser.email = newUser.email.split(",");
+        }
+        console.log("from server")
 
-       userModel.updateUser(userId,user)
+        console.log(newUser);
+
+       userModel.updateUser(userId,newUser)
             .then(
                 function(doc){
-                    res.json(doc);
+                    return userModel.findAllUsers();
                 },
 
                 function(err){
                     res.status(400).send(err);
                 }
-            );
+            )
+           .then(
+               function(users){
+                   res.json(users);
+               },
+               function(err){
+                   res.status(400).send(err);
+               }
+
+           );
     }
 
     function isAdmin(user) {
@@ -291,7 +322,9 @@ module.exports = function(app,userModel,formModel){
 
     function deleteUserByIdByAdmin(req,res){
         if(isAdmin(req.user)){
-            var userId =  req.params.id;
+            var userId =  req.params.userId;
+            console.log("delete from server");
+            console.log(userId);
             userModel.deleteUser(userId)
                 .then(
                     function(doc){
