@@ -3,13 +3,13 @@
  */
 module.exports = function(mongoose){
     var AppointmentSchema = mongoose.Schema({
-        vendorId: Object,
-        userId: Object,
+        vendorUsername: String,
+        username: String,
         startTime: Date,
         endTime: Date,
         price: Number,
-        payment_Method:String, enum:['credit Card','check payment','cash'],
-        discount: Number
+        payment:String, enum:['credit Card','check payment','cash'],
+        status:String,enum:['pending','confirmed','canceled']
 
     },{collection:'appointment'});
 

@@ -1,0 +1,49 @@
+
+<h1 class="page-header">Profile</h1>
+<div >
+    <ul class="nav nav-tabs" data-tabs="tabs">
+        <li role="presentation" ><a data-toggle="tab" href="#profile" role="tab">Profile</a></li>
+        <li role="presentation"><a data-toggle="tab" href="#appointmentList" role="tab">Appointment List</a></li>
+        <li role="presentation" class = "active" ><a data-toggle="tab" href="#reviewList" role="tab">Review List</a></li>
+    </ul>
+    <div class="tab-content" >
+
+        <div id ="reviewList" role="tabpanel" class="tab-pane fade">
+            <div class=" table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">vendor</th>
+                        <th class="col-md-2">username</th>
+                        <th class="col-md-2">time</th>
+                        <th class="col-md-2">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            rating</th>
+                        <th class="col-md-6">comment</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="review in model.reviews">
+                        <td> {{review.vendorUsername}} </td>
+                        <td>{{review.username}}</td>
+                        <td>{{review.time}}</td>
+                        <td>{{review.rating}}</td>
+                        <td>{{review.comment}}</td>
+                        <td>
+
+                            <button ng-click="model.deleteReview(model.review)" type="button" class="btn btn-default" aria-label="glyphicon-remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="model.selectReview(model.review)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,67 +1,77 @@
+
 <h1 class="page-header">Profile</h1>
-<div class="tabbable">
-    <ul class="nav nav-tabs">
-        <li class = "active"><a href="#profile">Profile</a></li>
-        <li ><a href="#/appointments">Appointments</a></li>
-        <li ><a href="#/Reviews">Reviews</a></li>
+<div >
+    <ul class="nav nav-tabs" data-tabs="tabs">
+        <li role="presentation"  class = "active"><a data-toggle="tab" href="#profile" role="tab">Profile</a></li>
+        <li role="presentation" ><a data-toggle="tab" href="#appointmentList" role="tab">Appointment List</a></li>
+        <li role="presentation" ><a data-toggle="tab" href="#reviewList" role="tab">Review List</a></li>
+
     </ul>
     <div class="tab-content" >
-        <div id ="profile" class="tab-pane active">
-
+        <div id ="profile" role="tabpanel" class="tab-pane active">
             <form class="form-horizontal">
                 <div class="form-group">
                     <label for="usr" class="col-sm-2 control-label">Username: </label>
                     <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.username" class="form-control" id="usr" placeholder=username>
+                        <input type="text" ng-model="model.user.username" class="form-control" id="usr" placeholder="Username">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">Password: </label>
+                    <label for="inputPassword" class="col-sm-2 control-label">Password: </label>
                     <div class="col-sm-10">
-                        <input type="password" ng-model="model.user1.password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" ng-model="model.user.password" class="form-control" id="inputPassword" placeholder="Password">
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="firstName" class="col-sm-2 control-label">First Name: </label>
+                    <label  class="col-sm-2 control-label">Personal name or company Name </label>
                     <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.firstName" class="form-control" id="firstName" placeholder="First Name ">
+                        <input type="text" ng-model="model.user.name" class="form-control"  placeholder="Alice Lee">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="lastName" class="col-sm-2 control-label">Last Name: </label>
-                    <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.lastName" class="form-control" id="lastName" placeholder="Last Name ">
+
+                <div class="form-group" ng-if="model.user.role == 'vendor'">
+                    <div>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <input  type="file" name="myFile"/>
+                            <button class="btn btn-default" type="submit">Upload File</button>
+                        </form>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">Email: </label>
+
+
+                    <label  class="col-sm-2 control-label">Provided services: </label>
                     <div class="col-sm-10">
-                        <input type="email" ng-model="model.user1.email" class="form-control" id="email" placeholder="Email">
+                        <input type="text" ng-model="model.user.services" class="form-control"  placeholder="carpet cleaning,carpet installation">
                     </div>
                 </div>
 
 
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email: </label>
+                    <div class="col-sm-10">
+                        <input type="email" ng-model="model.user.email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="phone" class="col-sm-2 control-label">Phone: </label>
                     <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.phone" class="form-control" id="phone" placeholder="(123)456-7890">
+                        <input type="text" ng-model="model.user.phone" class="form-control" id="phone" placeholder="(123)456-7890">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label">Address: </label>
                     <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.address" class="form-control" id="address" placeholder="No. Street, City, State">
+                        <input type="text" ng-model="model.user.address" class="form-control" id="address" placeholder="No. Street, City, State">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="zipCode" class="col-sm-2 control-label">ZipCode: </label>
                     <div class="col-sm-10">
-                        <input type="text" ng-model="model.user1.zipCode" class="form-control" id="zipCode" placeholder="98125">
+                        <input type="text" ng-model="model.user.zipCode" class="form-control" id="zipCode" placeholder="98125">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button ng-click="model.update(model.user1)" class="btn btn-default">Update</button>
@@ -69,6 +79,6 @@
                 </div>
             </form>
         </div>
-    </div>
 
+    </div>
 </div>

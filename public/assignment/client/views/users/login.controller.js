@@ -5,9 +5,7 @@
 
 
     function LoginController ($location,
-                              UserService,
-                              FormService,
-                              $q
+                              UserService
     ) {
         var vm = this;
         console.log("here we are from login");

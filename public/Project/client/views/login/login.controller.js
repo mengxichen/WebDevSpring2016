@@ -5,9 +5,7 @@
 
 
     function LoginController ($location,
-                              UserService,
-                              FormService,
-                              $q
+                              UserService
     ) {
         var vm = this;
         console.log("here we are from login");
@@ -25,16 +23,18 @@
             }
 
             UserService
-                .findUserByCredentials({
+                .login({
                     username: user.username,
                     password: user.password
                 })
                 .then(function (response) {
-                    if (response[0]) {
-                        console.log(response[0]);
+                    if (response.data) {
+                        console.log(response);
                         $location.url("/profile");
-                        UserService.setCurrentUser(response[0])
+                        UserService.setCurrentUser(response.data)
 
+                    }else{
+                        vm.message = "either username or password is wrong"
                     }
 
                 });

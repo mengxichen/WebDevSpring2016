@@ -4,15 +4,15 @@
 (function (){
     angular
         .module("FormBuilderApp")
-        .config(function($routeProvider, $httpProvider){
+        .config(function($routeProvider){
             $routeProvider
                 .when("/home",{
                     templateUrl:"views/home/home.view.html",
                     controller:"HomeController",
                     controllerAs: "model",
-                    resolve: {
+                    /*resolve: {
                         loggedin: checkCurrentUser
-                    }
+                    }*/
                 })
                 .when("/forms",{
                     templateUrl:"views/forms/forms.view.html",
@@ -23,17 +23,18 @@
                     templateUrl:"views/users/profile.view.html",
                     controller:"ProfileController",
                     controllerAs: "model",
-                    resolve: {
+                   /* resolve: {
                         loggedin: checkLoggedin
-                    }
+                    }*/
                 })
+
                 .when("/admin", {
                     templateUrl:"views/admin/admin.view.html",
                     controller:"AdminController",
                     controllerAs: "model",
-                    resolve: {
+                    /*resolve: {
                         loggedin: checkAdmin
-                    }
+                    }*/
                 })
 
                 .when("/login",{

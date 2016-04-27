@@ -2,29 +2,91 @@
  * Created by mengxichen on 3/10/16.
  */
 
+/*
  var passport         = require('passport');
- var LocalStrategy    = require('passport-local').Strategy;
+ var FacebookStrategy = require('passport-facebook').Strategy;
+*/
 
 
-module.exports = function(app,userModel,formModel){
+module.exports = function(app,userModel){
 
     var auth = authorized;
 
     app.get("/api/assignment/user",findUserByUsername);
     app.get("/api/assignment/user",findUserByCredentials);
     app.put("/api/assignment/user/:id",updateUserById);
-    app.post("/api/assignment/login",passport.authenticate('local'), login );
+    app.post("/api/assignment/login", login );
     app.get("/api/assignment/loggedin", loggedin);
     app.post("/api/assignment/register",register);
     app.post("/api/assignment/logout", logout);
 
 
-    app.post("/api/assignment/admin/user",auth, createUserByAdmin);
-    app.get("/api/assignment/admin/user",auth, findAllUsersByAdmin);
-    app.get("/api/assignment/admin/user/:userId", auth,findUserByIdByAdmin);
-    app.delete("/api/assignment/admin/user/:userId", auth,deleteUserByIdByAdmin);
-    app.put("/appi/assignment/admin/user/:userId",auth,updateUserByAdmin);
-    app.get("/api/assignment/admin/sort",auth,sortCategory);
+    app.post("/api/assignment/admin/user", createUserByAdmin);
+    app.get("/api/assignment/admin/user",findAllUsersByAdmin);
+    app.get("/api/assignment/admin/user/:userId", findUserByIdByAdmin);
+    app.delete("/api/assignment/admin/user/:userId", deleteUserByIdByAdmin);
+    app.put("/appi/assignment/admin/user/:userId",updateUserByAdmin);
+    app.get("/api/assignment/admin/sort",sortCategory);
+
+   /* app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/#/profile',
+            failureRedirect: '/#/login'
+        }));*/
+
+
+
+
+    /*var facebookConfig = {
+        clientID        : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL     : process.env.FACEBOOK_CALLBACK_URL,
+
+    };
+
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        userModel
+            .findUserByFacebookId(profile.id)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var names = profile.displayName.split(" ");
+                        var newFacebookUser = {
+                            lastName:  names[1],
+                            firstName: names[0],
+                            email:     profile.emails ? profile.emails[0].value:"",
+                            facebook: {
+                                id:    profile.id,
+                                token: token
+                            }
+                        };
+                        return userModel.createUser(newFacebookUser);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            )
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
+                    if (err) { return done(err); }
+                }
+            );
+    }
 
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
@@ -34,39 +96,13 @@ module.exports = function(app,userModel,formModel){
         }
     };
 
-    passport.use(new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
-
-
-    function localStrategy(username,password,done){
-        userModel
-            .findUserByCredentials(username,password)
-            .then(
-                function(user){
-                    if(!user){
-                        return done(null,false);
-                    }
-
-                    return done(null,user);
-                },
-                function(err){
-                    if(err){
-                        return done(err);
-                    }
-                }
-
-
-            )
-    }
-
 
     //send it back to client,serialize the entire user object
-    /*Configure serialization and desirialization to set and
+    /!*Configure serialization and desirialization to set and
     retrieve the user identity from the session cookie.
         The cookie keeps the identity in the client browser
     which provides the cookie in every request. The cookie is encrypted
-    to avoid tampering on the client side.*/
+    to avoid tampering on the client side.*!/
     function serializeUser(user,done){
         done(null,user);
     }
@@ -83,7 +119,7 @@ module.exports = function(app,userModel,formModel){
                 }
             );
     }
-
+*/
     function login(req,res){
         var user = req.user;
         res.json(user);

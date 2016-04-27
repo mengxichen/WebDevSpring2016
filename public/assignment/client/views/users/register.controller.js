@@ -4,7 +4,7 @@
 (function(){
     angular
         .module("FormBuilderApp")
-        .controller("RegistrationController", function ($location,UserService,FormService){
+        .controller("RegistrationController", function ($location,UserService){
             console.log("here we are from register")
             var vm = this;
             vm.register = register;

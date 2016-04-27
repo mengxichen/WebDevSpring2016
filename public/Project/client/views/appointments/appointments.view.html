@@ -1,24 +1,58 @@
-<h1>{{business.name}}</h1>
 
-<h1>Make appointment for vendor {{business.name}}</h1>
+<div>
+    <div class="progress">
+        <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25"
+             aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+            setting up the appointment!
+        </div>
+    </div>
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th class="col-md-6">
-            <span class="glyphicon glyphicon-triangle-bottom"></span>
-            Service</th>
-        <th class="col-md-4">Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="form in forms" ng-class="{'success' : $index == selectedFormIndex}">
-        <td> {{form.title}} </td>
-        <td>
-            <button ng-click="selectForm(form)" type="button" class="btn btn-default" aria-label="glyphicon-pencil">
-                <span class="glyphicon glyphicon-ok"></span>
-            </button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+    <h3>Make an appointment with {{model.businessName}}</h3>
+    <hr>
+    <h4> Choose a time range that you are available at home!</h4>
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Start Time: </label>
+            <div class="col-sm-10">
+                <input type="date" ng-model="model.appointment.startTime" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">End Time: </label>
+            <div class="col-sm-10">
+                <input type="date" ng-model="model.appointment.endTime" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">Payment Menthod: </label>
+            <div class="col-sm-10">
+                <div class="radio">
+                    <label><input type="radio" name="payment" ng-model="model.appointment.payment" value="credit card">
+                        Credit Card</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio"  name="payment" ng-model="model.appointment.payment" value="credit card">
+                        Check Payment</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="payment" ng-model="model.appointment.payment" value="credit card">
+                        cash</label>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button ng-click="model.submit(model.appointment)" class="btn btn-default">Submit!</button>
+                <button ng-click="model.cancel()" class="btn btn-danger">Cancel</button>
+
+            </div>
+        </div>
+
+
+    </form>
+
+</div>

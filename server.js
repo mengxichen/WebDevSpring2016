@@ -9,10 +9,11 @@ var passport        = require('passport');
 var mongoose        = require('mongoose');
 var LocalStrategy   = require('passport-local').Strategy;
 
+
 // default to a 'localhost' configuration:
 var connection_string = 'mongodb://127.0.0.1:27017/cs5610';
 
-
+app.use(express.bodyParser({ uploadDir: './public/uploads', keepExtensions: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
@@ -22,11 +23,10 @@ app.use(session({
     saveUninitialized: true
 }));
 //app.use(session({ secret: process.env.PASSPORT_SECRET }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
-
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
@@ -43,8 +43,8 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 
 var db = mongoose.connect(connection_string);
 
-console.log(mongoose);
-app.listen(port, ipaddress);
 
 require("./public/assignment/server/app.js")(app,mongoose,db);
 require("./public/Project/server/app.js")(app,mongoose,db);
+
+app.listen(port, ipaddress);

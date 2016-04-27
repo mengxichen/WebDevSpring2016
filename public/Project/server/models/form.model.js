@@ -1,12 +1,9 @@
-/**
- * Created by mengxichen on 3/9/16.
- */
-var mock = require("./form.mock.json");
+
 
 var q = require("q");
 module.exports = function(mongoose, db){
-    var FormSchema = require("./form.schema.server.js")(mongoose);
-    var FieldSchema = require("./field.schema.server.js")(mongoose);
+    var FormSchema = require("./../schema/form.schema.server.js")(mongoose);
+    var FieldSchema = require("./../schema/field.schema.server.js")(mongoose);
 
     var FormModel = mongoose.model("Service",FormSchema);
     var FieldModel  = mongoose.model("ServiceField", FieldSchema);

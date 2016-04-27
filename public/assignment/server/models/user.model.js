@@ -17,12 +17,17 @@ module.exports = function(mongoose, db){
         deleteUser : deleteUser,
         findUserByUsername : findUserByUsername,
         findUserByCredentials : findUserByCredentials,
+        findUserByFacebookId: findUserByFacebookId,
         sortCategory:sortCategory
 
 
     };
 
     return api;
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
+    }
 
     function sortCategory(category, dir){
         var deferred = q.defer();

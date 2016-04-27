@@ -4,7 +4,7 @@
 var q = require("q");
 
 module.exports = function(mongoose, db) {
-    var AppointmentSchema = require("./appointment.schema.server.js")(mongoose);
+    var AppointmentSchema = require("./../schema/appointment.schema.server.js")(mongoose);
 
     var AppointmentModel = mongoose.model('Appointment', AppointmentSchema);
 
@@ -12,8 +12,8 @@ module.exports = function(mongoose, db) {
 
         createAppointment:createAppointment,
         findAllAppointments:findAllAppointments,
-        findAppByUserId:findAppByUserId,
-        findAppByVendorId:findAppByVendorId,
+        findAllAppByUsername:findAllAppByUsername,
+        findAppByVendorUsername:findAppByVendorUsername,
         findAppointmentById:findAppointmentById,
         updateAppointmentById:updateAppointmentById,
         deleteAppointmentById:deleteAppointmentById
@@ -25,7 +25,16 @@ module.exports = function(mongoose, db) {
     function createAppointment(app){
 
         var deferred = q.defer();
-        AppointmentModel.create(app,function(err,doc){
+        AppointmentModel.create({
+            vendorUsername: app.vendorUsername,
+            username: app.username,
+            startTime: app.startTime,
+            endTime: app.endTime,
+            price: 30,
+            payment:app.payment,
+            status:"pending"
+
+        },function(err,doc){
 
             if(err){
                 deferred.reject(err);
@@ -51,9 +60,9 @@ module.exports = function(mongoose, db) {
         return deferred.promise;
     }
 
-    function findAppByUserId(userId){
+    function findAllAppByUsername(username){
         var deferred = q.defer();
-        AppointmentModel.findById(userId,function(err,doc){
+        AppointmentModel.find({username:username},function(err,doc){
             if(err){
                 deferred.reject(err);
 
@@ -67,9 +76,9 @@ module.exports = function(mongoose, db) {
 
     }
 
-    function findAppByVendorId(vendoId){
+    function findAppByVendorUsername(vendorUsername){
         var deferred = q.defer();
-        AppointmentModel.findById(vendorId,function(err,doc){
+        AppointmentModel.find({vendorUsername:vendorUsername},function(err,doc){
             if(err){
                 deferred.reject(err);
 
@@ -107,6 +116,7 @@ module.exports = function(mongoose, db) {
                 doc.price = app.price;
                 doc.payment_Method = app.payment_Method;
                 doc.discount = app.discount;
+                doc.status = app.status;
             doc.save(function(err,doc){
                 if(err){
                     deferred.reject(err);

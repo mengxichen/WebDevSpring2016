@@ -1,6 +1,6 @@
 module.exports = function(app,AppointmentModel){
-    app.get("/api/project/appointment",findAppByUserId);
-    app.get("/api/project/appointment/vendor",findAppByVendorId);
+    app.get("/api/project/appointment/:username",findAllAppByUsername);
+    app.get("/api/project/appointment/vendor/:vendorUsername",findAppByVendorUsername);
     app.post("/api/project/appointment", createAppointment);
     app.get("/api/project/appointmentAll", findAllAppointments);
     app.get("/api/project/appointment/:id", findAppointmentById);
@@ -11,7 +11,7 @@ module.exports = function(app,AppointmentModel){
     function createAppointment(req,res){
         var appointment = req.body;
 
-        appointment=AppointmentModel.createAppointment(appointment)
+        AppointmentModel.createAppointment(appointment)
             .then(
                 function(doc){
                     res.json(doc);
@@ -23,7 +23,7 @@ module.exports = function(app,AppointmentModel){
     }
 
     function findAllAppointments(req,res){
-        var apps = AppointmentModel.findAllAppointments()
+        AppointmentModel.findAllAppointments()
             .then(
                 function(doc){
                     res.json(doc);
@@ -35,11 +35,11 @@ module.exports = function(app,AppointmentModel){
 
     }
 
-    function findAppByUserId(req,res){
-        var userId = req.params.id;
+    function findAllAppByUsername(req,res){
+        var username = req.params.username;
         /*        var user = userModel.findUserById(userId);
          res.status(200).json(user);*/
-        var apps= AppointmentModel.findAppByUserId(userId)
+        var apps= AppointmentModel.findAllAppByUsername(username)
             .then(
                 function (doc){
                     res.json(doc);
@@ -51,9 +51,9 @@ module.exports = function(app,AppointmentModel){
     }
 
 
-    function findAppByVendorId(req,res){
-        var vendorId = req.query.vendorId;
-        var apps = AppointmentModel.findAppByVendorId(vendorId)
+    function findAppByVendorUsername(req,res){
+        var vendorUsername = req.params.vendorUsername;
+        var apps = AppointmentModel.findAppByVendorUsername(vendorUsername)
             .then(
                 function (doc){
                     res.json(doc);

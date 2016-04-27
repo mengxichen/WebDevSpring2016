@@ -1,5 +1,4 @@
-
-
+<h2>{{errorMessage}}</h2>
 <h1 class="page-header">Forms</h1>
 <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -7,109 +6,178 @@
         <li class = "active"><a href="#field">Fields</a></li>
     </ul>
 
-        <div class="tab-pane active" id="field">
-            <form role="form">
-                <div class="form-group">
-                    <label class="control-label col-md-10">First Name:</label>
-                    <div class=" col-md-5">
-                        <input type="text" class="form-control" placeholder="First Name">
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label  class="control-label col-md-10">Last Name:</label>
-                    <div class=" col-md-5">
-                        <input type="text" class="form-control" placeholder="Last Name">
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label  class="control-label col-md-10">Date of Birth:</label>
-                    <div class = "col-md-5">
-                        <input type="date" class ="form-control" placeholder="Select Date">
+    <div class="tab-pane active" id="field">
+        <form role="form">
+            <div class="form-group" id="tbody-sortable" form-sortable jga-sortable-callback="model.sortField(start, end)">
+                <div ng-repeat="field in model.fields">
+                    <label class="control-label col-md-10">{{field.label}}</label>
+                    <div ng-switch on="field.type">
+                        <div ng-switch-when="TEXT" class = "col-md-5">
+                            <input type="TEXT" class="form-control" placeholder="{{field.placeholder}}">
+                        </div>
+
+                        <div ng-switch-when="OPTIONS" class = "col-md-5">
+
+                            <select class="form-control">
+                                <option ng-repeat="option in field.options"> {{option.label}}
+
+                                </option>
+                            </select>
+                        </div>
+
+                        <div ng-switch-when="EMAIL" class = "col-md-5">
+                            <input type="EMAIL" class="form-control" placeholder="{{field.placeholder}}">
+
+                        </div>
+
+                        <div ng-switch-when="TEXTAREA" class = "col-md-5">
+
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+
+                        <div ng-switch-when="DATE" class = "col-md-5">
+                            <input type="DATE" class="form-control" placeholder="{{field.placeholder}}">
+                        </div>
+
+                        <div ng-switch-when="RADIO" class = "col-md-5">
+                            <div ng-repeat="option in field.options">
+                                <div class="RADIO">
+                                    <label><input type="radio" name=option.value checked>{{option.label}}</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div ng-switch-when="CHECKBOX" class = "col-md-5">
+                            <div ng-repeat="option in field.options">
+                                <div class="CHECKBOX">
+                                    <label><input type="checkbox" value="{{option.value}}" checked>{{option.label}}</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
+                        <li class="glyphicon glyphicon-align-justify pull-right" ></li>
+                        <li class="glyphicon glyphicon-remove pull-right" ng-click="model.removeField(field)"></li>
+                        <li class="glyphicon glyphicon-plus pull-right" ng-click = "model.addField(field.type)"></li>
+                        <li class="glyphicon glyphicon-pencil pull-right" ng-click="model.editDialog(field)"></li>
                     </ul>
-                    <label class = "cotrol-label col-md-10" for="gender">Gender:</label>
-                    <div class = "col-md-5">
-                        <select class="form-control" id="gender">
-                            <option>Female</option>
-                            <option>Male</option>
-                        </select>
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label class = "control-label col-md-10">Roles:</label>
-                    <div class = "col-md-5">
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role-admin" checked>Admin</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role2-stud">Student</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="role3-user">User</label>
-                        </div>
+                 </div>
+            </div>
 
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-                    <label class = "control-label col-md-10">License Aggreement:</label>
-                    <div class = "col-md-5">
-                        <div class="radio">
-                            <label><input type="radio" name="license" checked>Yes</label>
+
+            <hr/>
+
+            <!-- Modal -->
+            <div class="modal fade" id="dialog-1" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{ model.fieldType}}</h4>
                         </div>
-                        <div class="radio">
-                            <label><input type="radio" name="license">No</label>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" ng-model="model.text.label">
+                                <label class="control-label">Placeholder</label>
+                                <input type="text" class="form-control" ng-model="model.text.placeholder">
+                            </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.text,model.fieldType)"><span class="glyphicon glyphicon-okay"></span> ok</button>
 
+                        </div>
                     </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-align-justify pull-right"></li>
-                        <li class="glyphicon glyphicon-remove pull-right"></li>
-                        <li class="glyphicon glyphicon-plus pull-right"></li>
-                        <li class="glyphicon glyphicon-pencil pull-right"></li>
-                    </ul>
-
-                    <label class = "control-label col-md-10" for="newField">Add New Field:</label>
-
-                    <div class="col-md-5">
-                        <select class="form-control" id="newField">
-                            <option>Single Line Text</option>
-                            <option>Date</option>
-                            <option>Dropdown</option>
-                            <option>Checkboxes</option>
-                            <option>Radio buttons</option>
-                            <option>Paragraph Text Field</option>
-                        </select>
-                    </div>
-                    <ul class = "col-md-5">
-                        <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></li>
-                    </ul>
 
                 </div>
-            </form>
-        </div>
+            </div>
+
+
+
+            <div class="modal fade" id="dialog-3" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{model.fieldType}}</h4>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" ng-model="model.text2.label">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.text2,model.fieldType)"><span class="glyphicon glyphicon-okay"></span> ok</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="modal fade" id="dialog-4" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>{{model.fieldType}}</h4>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <div  >
+                                <label class="control-label">Label</label>
+                                <input type="text" class="form-control" ng-model="model.textarea.label" >
+                                <label class="control-label">Options</label>
+                                <textarea class="form-control" rows="5" ng-model="model.textarea.options">
+                                    1.These can be enter in a textarea,one option per line2.You can use the following format: LABEL:VALUE
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" ng-click="model.updateField(model.fieldId,model.textarea,model.fieldType)"><span class="glyphicon glyphicon-okay"></span> ok</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <label class = "control-label col-md-10">Add New Field:</label>
+
+            <div class="col-md-5">
+                <select id="newField">
+                    <option value="TEXT" selected="selected">Single Line Text Field</option>
+                    <option value="TEXTAREA" >Multi Line Text Field</option>
+                    <option value="DATE">Date Field</option>
+                    <option value="OPTIONS">Dropdown Field</option>
+                    <option value="CHECKBOX">Checkboxes Field</option>
+                    <option value="RADIO">Radio Buttons Field</option>
+                </select>
+
+            </div>
+
+            <ul class = "col-md-5">
+                <li class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-click="model.addNewField()"></li>
+            </ul>
+
+        </form>
     </div>
 </div>
+
 
 

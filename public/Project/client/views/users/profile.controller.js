@@ -7,33 +7,37 @@
         .controller("ProfileController", function ($scope,$rootScope,UserService){
             console.log("here we are from profile");
             var vm = this;
-            vm.user1 = {
+            vm.user = {
                 username: $rootScope.currentUser.username,
                 password: $rootScope.currentUser.password,
-                firstName: $rootScope.currentUser.firstName,
-                lastName: $rootScope.currentUser.lastName,
+                name: $rootScope.currentUser.name,
                 email: $rootScope.currentUser.email,
-                phone:$rootScope.currentUser.phone,
-                zipCode:$rootScope.currentUser.zipCode,
-                address:$rootScope.currentUser.address
+                phone: $rootScope.currentUser.phone,
+                zipCode: $rootScope.currentUser.zipCode,
+                address: $rootScope.currentUser.address,
+                categories: $rootScope.currentUser.categories
+            }
 
-            };
+
+
+
+
+            function init(){
+
+            }
+            init();
             vm.update = update;
 
+
             function update(updateUser){
-                var userId= $rootScope.user._id;
-                UserService.updateUser(userId,updateUser,render);
-                function render(response){
-                    console.log(response);
-                    $rootScope.user=response;
-                }
-
-                UserService.findAllUsers(callback);
-                function callback(response){
-                    console.log(response);
-                }
-
-
+                console.log(updateUser);
+                var userId= $rootScope.currentUser._id;
+                UserService
+                    .updateUser(userId,updateUser)
+                    .then(function(response){
+                        console.log(response);
+                        UserService.setCurrentUser(response);
+                    });
             }
         });
 

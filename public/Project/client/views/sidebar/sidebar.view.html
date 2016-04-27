@@ -2,7 +2,7 @@
     <ul class="nav nav-sidebar" >
         <li><a href="#/home"  ng-class = "{'active' : $location.url() == '/home'}">Home</a></li>
         <li><a ng-show="currentUser" href="#/profile" ng-class = "{'active' : $location.url() == '/profile'}">Profile</a></li>
-        <li><a ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0" href="#/admin" ng-class = "{'active' : $location.url() == '/admin'}">Admin</a></li>
-        <li><a ng-show="currentUser" href="#/forms" ng-class = "{'active' : $location.url() == '/forms'}">Forms</a></li>
+        <li><a ng-show="currentUser && (currentUser.role == 'admin')" href="#/admin" ng-class = "{'active' : $location.url() == '/admin'}">Admin</a></li>
+        <li><a ng-show="currentUser && (currentUser.role == 'vendor')" href="#/forms" ng-class = "{'active' : $location.url() == '/forms'}">Forms</a></li>
     </ul>
 </div>

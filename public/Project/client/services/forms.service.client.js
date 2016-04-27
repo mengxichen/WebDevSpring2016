@@ -1,12 +1,12 @@
 /**
- * Created by mengxichen on 3/2/16.
+ * Created by mengxichen on 2/20/16.
  */
 (function() {
     angular
         .module("HomeServiceApp")
         .factory("FormService", FormService);
 
-    function FormService(){
+    function FormService($http,$q){
 
         var api = {
             createFormForUser:createFormForUser,
@@ -31,17 +31,17 @@
             return deferred.promise;
 
         }
-        function findAllFormsForUser(userId){
-            var deferred = $q.defer();
+         function findAllFormsForUser(userId){
+             var deferred = $q.defer();
 
-            $http
-                .get("/api/project/user/" + userId +"/form")
-                .success(function(forms){
-                    deferred.resolve(forms);
-                });
+             $http
+                 .get("/api/project/user/" + userId +"/form")
+                 .success(function(forms){
+                     deferred.resolve(forms);
+                 });
 
-            return deferred.promise;
-        }
+             return deferred.promise;
+         }
 
         function deleteFormById(formId){
 
@@ -68,6 +68,5 @@
             return deferred.promise;
         }
     }
-
 
 })();

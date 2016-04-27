@@ -7,43 +7,104 @@
         .factory("AppointmentService", AppointmentService);
 
 
-    function AppointmentService() {
-            var appointments =[
-                {"_id":"000", "vendorId":321, "CompanyName":"Carpet Cleaning LLC","userId":123, "Date": "2015-03-25T12:00:00","price":120},
-                {"_id":"010","vendorId":421, "CompanyName":"Plumbing LLC","userId":123, "Date": "2015-06-15T12:00:00","price":230},
-                {"_id":"020", "vendorId":421, "CompanyName":"Plumbing LLC","userId":234, "Date": "2015-09-15T12:00:00","price":130},
+    function AppointmentService($http,$q) {
 
-            ];
 
 
         var api = {
-            geAllAppointmentsByUserId:geAllAppointmentsByUserId,
-            getAllAppointmentsByVendorId:getAllAppointmentsByVendorId,
+            createAppointment:createAppointment,
+            deleteAppointmentByAppId:deleteAppointmentByAppId,
+            updateAppointmentByAppId:updateAppointmentByAppId,
+            findAppointmentByAppId:findAppointmentByAppId,
+            getAllAppointmentsByUsername:getAllAppointmentsByUsername,
+            getAllAppointmentsByVendorUsername:getAllAppointmentsByVendorUsername,
+            findAllAppointments:findAllAppointments
 
         }
 
         return api;
 
-        function geAllAppointmentsByUserId(userId,callback){
-            var apps = [];
-            for (var i; i < appointments.length; i++){
-                if(userId == appointments[i].userId){
-                    apps.push(appointments[i]);
-                }
-            }
+        function findAllAppointments(){
+            var deferred = $q.defer();
 
-            callback(apps);
+            $http
+                .get("/api/project/appointmentAll")
+                .success(function(apps){
+                    deferred.resolve(apps);
+                });
+
+            return deferred.promise;
         }
 
-        function getAllAppointmentsByVendorId(vendorId, callback){
-            var apps = [];
-            for (var i; i < appointments.length; i++){
-                if(vendorId == appointments[i].vendorId){
-                    apps.push(appointments[i]);
-                }
-            }
+        function createAppointment(app){
+            var deferred = $q.defer();
 
-            callback(apps);
+            $http
+                .post("/api/project/appointment",app)
+                .success(function(apps){
+                    deferred.resolve(apps);
+                });
+
+            return deferred.promise;
+        }
+
+        function deleteAppointmentByAppId(appId){
+            var deferred = $q.defer();
+
+            $http
+                .delete("/api/project/appointment" + appId)
+                .success(function(app){
+                    deferred.resolve(app);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateAppointmentByAppId(appId, app){
+            var deferred = $q.defer();
+
+            $http
+                .put("/api/project/appointment/" + appId, app)
+                .success(function(app){
+                    deferred.resolve(app);
+                });
+
+            return deferred.promise;
+        }
+
+        function getAllAppointmentsByUsername(username){
+            var deferred = $q.defer();
+
+            $http
+                .get("/api/project/appointment/" + username)
+                .success(function(apps){
+                    deferred.resolve(apps);
+                });
+
+            return deferred.promise;
+        }
+        function findAppointmentByAppId(appId){
+            var deferred = $q.defer();
+
+            $http
+                .get("/api/project/appointment/" + appId)
+                .success(function(app){
+                    deferred.resolve(app);
+                });
+
+            return deferred.promise;
+        }
+
+        function getAllAppointmentsByVendorUsername(vendorUsername){
+            var deferred = $q.defer();
+
+            $http
+                .get("/api/project/appointment/vendor/" + vendorUsername)
+                .success(function(apps){
+                    deferred.resolve(apps);
+                });
+
+            return deferred.promise;
         }
 
     }

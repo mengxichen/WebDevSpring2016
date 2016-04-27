@@ -4,8 +4,8 @@
 (function() {
     angular
         .module("HomeServiceApp")
-        .controller("RegistrationController", function ($rootScope, $location, UserService) {
-            console.log("here we are from register")
+        .controller("RegistrationController", function ($location, UserService, VendorService) {
+            console.log("here we are from register");
             var vm = this;
             vm.register = register;
 
@@ -16,19 +16,26 @@
             init();
 
             function register(user) {
-                console.log("add new users")
+                console.log("add new users");
+                console.log(user);
+                if (user.category == "individual") {
+                    user.role = "customer";
+                } else {
+                    user.role = "vendor";
+                }
 
                 UserService
-                    .createUser(user)
-                    .then(function (response) {
-                        var currentUser = response;
-                        console.log(currentUser);
-                        if (currentUser != null) {
-                            UserService.setCurrentUser(currentUser);
-                            $location.url("/profile");
-                        }
-                    });
+                    .register(user)
+                    .then(
+                        function (response) {
+                            var currentUser = response;
+                            console.log(currentUser);
+                            if (currentUser != null) {
+                                UserService.setCurrentUser(currentUser);
+                                $location.url("/profile");
+                            }
 
+                        });
             }
 
         })

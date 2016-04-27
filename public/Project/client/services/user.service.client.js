@@ -1,25 +1,70 @@
 /**
- * Created by mengxichen on 3/1/16.
+ * Created by mengxichen on 2/16/16.
  */
-(function() {
+(function(){
     angular
         .module("HomeServiceApp")
-        .factory("UserService", UserService);
-
+        .factory("UserService",UserService);
 
     function UserService($http,$rootScope,$q){
         var api ={
             findUserByUsername:findUserByUsername,
             findUserByCredentials:findUserByCredentials ,
             findAllUsers:findAllUsers,
-            createUser:createUser,
+            register:register,
             deleteUserById:deleteUserById,
             updateUser:updateUser,
-            setCurrentUser:setCurrentUser
+            registerBusiness:registerBusiness,
+            setCurrentUser:setCurrentUser,
+            createUser:createUser,
+            login:login,
+            logout:logout,
+            updateUserByAdmin:updateUserByAdmin,
+            sortAscending:sortAscending
+
+
         };
 
         return api;
 
+        function sortAscending(category,dir){
+            var deferred = $q.defer();
+            $http
+                .get("/api/project/admin/sort?category=" + category + "&dir=" + dir)
+                .success(function(users){
+                    deferred.resolve(users);
+                });
+            return deferred.promise;
+        }
+
+        function updateUserByAdmin(userId,user){
+            var deferred = $q.defer();
+
+            $http
+                .put("/appi/project/admin/user/" + userId,user)
+                .success(function(user){
+                    deferred.resolve(user);
+                });
+
+            return deferred.promise;
+        }
+
+        function logout() {
+            var deferred = $q.defer();
+
+            $http
+                .post("/api/project/logout")
+                .success(function(user){
+                    deferred.resolve(user);
+                });
+            return deferred.promise;
+        }
+
+        function login(user){
+
+            return $http.post("/api/project/login", user);
+
+        }
 
         function findUserByUsername(username){
             var deferred = $q.defer();
@@ -51,7 +96,7 @@
             var deferred = $q.defer();
 
             $http
-                .get("/api/project/userAll")
+                .get("/api/project/admin/user")
                 .success(function(users){
                     deferred.resolve(users);
                 });
@@ -59,14 +104,51 @@
             return deferred.promise;
         }
 
-        function createUser(user){
+        function registerBusiness(business){
+
+            var vendor = {
+                username: business.id,
+                password: "123",
+                name:business.name,
+                phone:business.phone,
+                email: String,
+                zipCode:business.location.postal_code,
+                address:business.location.display_address,
+                categories:business.categories,
+                role:'vendor'
+            };
 
             var deferred = $q.defer();
 
             $http
-                .post("/api/project/user", user)
+                .post("/api/project/register", vendor)
                 .success(function(user){
                     deferred.resolve(user);
+                });
+
+            return deferred.promise;
+        }
+
+        function register(user){
+
+            var deferred = $q.defer();
+
+            $http
+                .post("/api/project/register", user)
+                .success(function(user){
+                    deferred.resolve(user);
+                });
+
+            return deferred.promise;
+        }
+
+        function createUser(user){
+            var deferred = $q.defer();
+
+            $http
+                .post("/api/project/admin/user", user)
+                .success(function(doc){
+                    deferred.resolve(doc);
                 });
 
             return deferred.promise;
@@ -77,7 +159,7 @@
             var deferred = $q.defer();
 
             $http
-                .delete("/api/project/user/" + userId)
+                .delete("/api/project/admin/user/" + userId)
                 .success(function(users){
                     deferred.resolve(users);
                 });
@@ -100,11 +182,11 @@
 
         function setCurrentUser(user) {
             $rootScope.currentUser = user;
+            console.log($rootScope.currentUser);
 
         }
 
 
     }
-
 
 })();

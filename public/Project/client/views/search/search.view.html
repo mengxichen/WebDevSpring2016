@@ -1,3 +1,4 @@
+<h2>{{errorMessage}}</h2>
 <div>
     <div class="progress">
         <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25"
@@ -18,11 +19,12 @@
     <div>
 
         <select name ="singleType" ng-model="model.service.type">
-            <option value="roof"></option>
-            <option value="Carpet"></option>
-            <option value="Plumbing"></option>
-            <option value="Gardening"></option>
+            <option value="roof">Roof</option>
+            <option value="Carpet">Carpet</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Gardening">Gardening</option>
         </select>
+
         </br></br>
         <input ng-model="model.service.location" class="form-control" placeholder="city,State or zipcode">
         </br>
@@ -30,7 +32,7 @@
     </div>
 
 
-    <h3>Search Results</h3>
+    <h3  ng-if="model.businesses">Search Results</h3>
     <div class="table-responsive">
         <table class="table" id="results">
             <thead>
@@ -43,17 +45,28 @@
             </tr>
             </thead>
             <tbody id="container">
-            <tr id = "template" ng-repeat="business in model.services">
-                <td><a href="#" class="link">{{business.name}}</a></td>
+            <tr id = "template" ng-repeat="business in model.businesses">
+
                 <td>
-                    {{business.location}}
+                    <button type="button" class="btn btn-default"
+                            data-toggle="popover" title="Popover title"
+                             data-content="{{business.snippet_text}}">{{business.name}}
+
+                    </button>
+                </td>
+
+                <td>{{business.location.display_address}}
                 </td>
                 <td>{{business.phone}}</td>
                 <td>{{business.rating}}</td>
 
                 <td><button type="button" ng-click = "model.select(business)"class="btn btn-default">Select</button></td>
+
+
             </tr>
+
             </tbody>
+
         </table>
     </div>
 
