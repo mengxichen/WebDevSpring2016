@@ -10,7 +10,7 @@
 
 module.exports = function(app,userModel){
 
-    var auth = authorized;
+    //var auth = authorized;
 
     app.get("/api/assignment/user",findUserByUsername);
     app.get("/api/assignment/user",findUserByCredentials);
