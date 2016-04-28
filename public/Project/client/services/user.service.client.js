@@ -121,7 +121,7 @@
             var deferred = $q.defer();
 
             $http
-                .post("/api/project/register", vendor)
+                .post("/api/project/registerVendor", vendor)
                 .success(function(user){
                     deferred.resolve(user);
                 });

@@ -1,68 +1,64 @@
-
+{{errorMessage}}
 <h1 class="page-header">Profile</h1>
 <div >
     <ul class="nav nav-tabs" data-tabs="tabs">
-        <li role="presentation" ><a data-toggle="tab" href="#profile" role="tab">Profile</a></li>
-        <li role="presentation"  class = "active"><a data-toggle="tab" href="#appointmentList" role="tab">Appointment List</a></li>
-        <li role="presentation" ><a data-toggle="tab" href="#reviewList" role="tab">Review List</a></li>
+        <li ><a data-toggle="tab" href="#profile" role="tab">Profile</a></li>
+        <li class = "active"><a data-toggle="tab" href="#appointmentList" role="tab">Appointment List</a></li>
+        <li ><a data-toggle="tab" href="#reviewList" role="tab">Review List</a></li>
     </ul>
     <div class="tab-content" >
-        <div id ="appointmentList" role="tabpanel" class="tab-pane fade">
+        <div id ="appointmentList" role="tabpanel" class="tab-pane active">
             <div class=" table-responsive">
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
-                        <th class="col-md-3">
-                            <span class="glyphicon glyphicon-triangle-bottom"></span>
-                            Company Name</th>
-                        <th class="col-md-2">
-                            customer</th>
-                        <th class="col-md-2">
-                            start time</th>
-                        <th class="col-md-2">
-                            end time</th>
-                        <th class="col-md-2">
-                            <span class="glyphicon glyphicon-triangle-bottom"></span>
-                            price</th>
-                        <th class="col-md-2">
-                            status</th>
-                        <th class="col-md-4">Action</th>
-                        <th class="col-md-4" ng-if="currentUser.role == 'customer'">Rate a service</th>
+                        <tr>
+                            <th class="col-md-3">
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                Company Name</th>
+                            <th class="col-md-2">
+                                customer</th>
+                            <th class="col-md-2">
+                                start time</th>
+                            <th class="col-md-2">
+                                end time</th>
+                            <th class="col-md-2">
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                price</th>
+                            <th class="col-md-2">
+                                status</th>
+                            <th class="col-md-4">Action</th>
+                            <th class="col-md-4" ng-if="currentUser.role == 'customer'">Rate a service</th>
 
-                    </tr>
-
-                    <tr>
-
-                    </tr>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="appointment in model.appointments">
-                        <td> {{appointment.vendorUsername}} </td>
-                        <td>{{appointment.username}}</td>
-                        <td> {{appointment.startTime}} </td>
-                        <td>{{appointment.endTime}}</td>
-                        <td> {{appointment.price}} </td>
-                        <td> {{appointment.status}} </td>
-                        <td>
-                            <button ng-click="model.editApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-pencil"
-                            ng-if="appointment.status == 'pending'">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                            <button ng-click="model.cancelApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-remove"
-                             ng-if="appointment.status == 'pending'">
-                                <span class="glyphicon glyphicon-remove-sign"></span>
-                            </button>
-                            <button ng-click="model.viewApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-detail">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                            </button>
-                        </td>
-                        <td ng-if="currentUser.role == 'customer'">
-                            <button ng-click="model.writeReview(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-star"
-                            ng-if="currentUser.role == 'customer'">
-                                <span class="glyphicon glyphicon-star"></span>
-                            </button>
-                        </td>
-                    </tr>
+                        <tr ng-repeat="appointment in model.apps">
+                            <td> {{appointment.vendorUsername}} </td>
+                            <td>{{appointment.username}}</td>
+                            <td> {{appointment.startTime}} </td>
+                            <td>{{appointment.endTime}}</td>
+                            <td> {{appointment.price}} </td>
+                            <td> {{appointment.status}} </td>
+                            <td>
+                                <button ng-click="model.editApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-pencil"
+                                ng-if="appointment.status == 'pending'">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                <button ng-click="model.cancelApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-remove"
+                                 ng-if="appointment.status == 'pending'">
+                                    <span class="glyphicon glyphicon-remove-sign"></span>
+                                </button>
+                                <button ng-click="model.viewApp(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-detail">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </button>
+                            </td>
+                            <td ng-if="currentUser.role == 'customer'">
+                                <button ng-click="model.writeReview(appointment)" type="button" class="btn btn-default" aria-label="glyphicon-star"
+                                ng-if="currentUser.role == 'customer'">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 

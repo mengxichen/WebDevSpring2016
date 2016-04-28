@@ -20,7 +20,7 @@
             var deferred = $q.defer();
             console.log(service);
             $http
-                .get("/api/project/vendor?term=" + service.type + "&location=" + service.location)
+                .get("/api/project/vendor?type="+service.type+"&location="+service.location)
                 .success(function(businesses){
                     deferred.resolve(businesses);
                 });

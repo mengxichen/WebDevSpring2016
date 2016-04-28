@@ -10,28 +10,28 @@
                     templateUrl:"views/search/search.view.html",
                     controller:"SearchController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                         loggedin: checkCurrentUser
-                    }*/
+                    }
 
                 })
 
                 .when("/appointmentList",{
                     templateUrl:"views/appointments/appointmentList.view.html",
-                    controller:"AppointmentController",
+                    controller:"AppointmentListController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                         loggedin: checkLoggedin
-                    }*/
+                    }
                 })
 
                 .when("/reviewList",{
                     templateUrl:"views/review/reviewList.view.html",
                     controller:"ReviewController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                      loggedin: checkLoggedin
-                     }*/
+                     }
                 })
 
 
@@ -39,9 +39,9 @@
                     templateUrl:"views/users/profile.view.html",
                     controller:"ProfileController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                      loggedin: checkLoggedin
-                     }*/
+                     }
                 })
 
 
@@ -49,9 +49,9 @@
                     templateUrl:"views/admin/admin.view.html",
                     controller:"AdminController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                         loggedin: checkAdmin
-                    }*/
+                    }
                 })
                 .when("/login",{
                     templateUrl:"views/login/login.view.html",
@@ -69,25 +69,25 @@
                     templateUrl:"views/appointments/appointments.view.html",
                     controller:"AppointmentController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                         checkLoggedin: checkLoggedin
-                    }*/
+                    }
                 })
                 .when("/forms",{
                     templateUrl:"views/forms/forms.view.html",
                     controller:"FormController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                      checkLoggedin: checkLoggedin
-                     }*/
+                     }
                 })
                 .when("/field/:formId",{
                     templateUrl:"views/forms/field.view.html",
                     controller:"FieldController",
                     controllerAs: "model",
-                    /*resolve: {
+                    resolve: {
                      checkLoggedin: checkLoggedin
-                     }*/
+                     }
                 })
 
                 .otherwise({

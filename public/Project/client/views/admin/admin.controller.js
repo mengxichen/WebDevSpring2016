@@ -1,7 +1,3 @@
-/**
- * Created by mengxichen on 2/8/16.
- */
-"use strict";
 (function(){
     angular
         .module("HomeServiceApp")
@@ -16,7 +12,6 @@
                 vm.sortAscending = sortAscending;
 
                 function init(){
-
                     UserService
                         .findAllUsers()
                         .then(handleSuccess, handleError);
@@ -58,11 +53,13 @@
                 }
 
                 function handleSuccess(response) {
-                    vm.users = response;
+                    vm.allUsers = response;
+                    console.log(response);
                     vm.newUser = null;
                 }
 
                 function handleError(error) {
+
                     vm.error = error;
                 }
 

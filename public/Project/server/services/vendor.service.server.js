@@ -10,17 +10,17 @@ var qs = require('querystring');
 var _ = require('lodash');
 
 
-module.exports = function(app,userModel) {
+module.exports = function(app) {
     app.get("/api/project/vendor", search);
 
     function search(req,res){
-        var term = 'Carpet';
-        var location = 'seattle';
-        console.log(term);
+        var type = req.query.type;
+        var location = req.query.location;
+        console.log(type);
         console.log(location);
         request_yelp(
             {location:location,
-                term: term},
+                term: type},
         function(err, response, body){
             if(err){
                 res.status(400).send(err);

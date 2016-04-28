@@ -1,4 +1,4 @@
-<h2>{{errorMessage}}</h2>
+<h2>{{model.error}}</h2>
 <div class="table-responsive">
     <h1 class="page-header">Admin</h1>
     <h2>Users</h2>
@@ -48,7 +48,7 @@
                     </button>
                 </td>
             </tr>
-            <tr ng-repeat = "user in model.users">
+            <tr ng-repeat = "user in model.allUsers">
                 <td>{{user.username}}</td>
                 <td></td>
                 <td>{{user.firstName}}</td>

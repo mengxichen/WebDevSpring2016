@@ -18,6 +18,8 @@ module.exports = function(app,userModel){
     app.get("/api/project/loggedin", loggedin);
     app.post("/api/project/register",register);
     app.post("/api/project/logout", logout);
+    app.post("/api/project/registerVendor", registerVendor);
+
 
 
     app.post("/api/project/admin/user",auth, createUserByAdmin);
@@ -26,7 +28,6 @@ module.exports = function(app,userModel){
     app.delete("/api/project/admin/user/:userId", auth,deleteUserByIdByAdmin);
     app.put("/appi/project/admin/user/:userId",auth,updateUserByAdmin);
     app.get("/api/project/admin/sort",auth,sortCategory);
-
 
 
 
@@ -100,6 +101,32 @@ module.exports = function(app,userModel){
     function logout(req,res){
         req.logOut();
         res.send(200);
+    }
+
+    function registerVendor(req,res){
+        var vendor = req.body;
+        userModel
+            .findUserByUsername(vendor.username)
+            .then(
+                function(user){
+                    if(user){
+                        res.json(null);
+                    }else{
+                        return userModel.createUser(vendor);
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(user){
+                    res.json(user);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function register(req,res){
